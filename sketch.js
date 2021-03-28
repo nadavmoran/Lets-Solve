@@ -1,4 +1,4 @@
-//import * as mat4 from "./Modules/mat4.js";
+import * as mat4 from "./Modules/mat4.js";
 
 let cam;
 
