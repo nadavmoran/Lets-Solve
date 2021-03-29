@@ -1,14 +1,18 @@
-class Cubie {
-  constructor(x, y, z, len_) {
-    this.pos = createVector(x, y, z);
+import { colors, BCK, FRT, DWN, UPP, LFT, RGT} from "./Constants.js";
+
+export class Cubie {
+  constructor(p5, x, y, z, len_) {
+    this.p5 = p5;
+    this.pos = this.p5.createVector(x, y, z);
     this.len = len_;
   }
   show() {
-    fill(255);
-    stroke(0);
-    strokeWeight(8);
-    push();
-    translate(this.pos.x, this.pos.y, this.pos.z);
+    this.p5.fill(255);
+    this.p5.stroke(0);
+    this.p5.strokeWeight(8);
+    this.p5.push();
+    this.p5.translate(this.pos.x, this.pos.y, this.pos.z);
+    this.p5.beginShape(this.p5.QUADS);
     const r = this.len / 2;
 
     // When this was ported, p5.js (version 1.0.0) had not yet
@@ -17,57 +21,57 @@ class Cubie {
     // So instead, we use separate shapes for each face of the cubie.
 
     // z-fixed
-    beginShape();
-    fill(colors[BCK]);
-    vertex(-r, -r, -r);
-    vertex(r, -r, -r);
-    vertex(r, r, -r);
-    vertex(-r, r, -r);
-    endShape(CLOSE);
+    this.p5.beginShape();
+    this.p5.fill(colors[BCK]);
+    this.p5.vertex(-r, -r, -r);
+    this.p5.vertex(r, -r, -r);
+    this.p5.vertex(r, r, -r);
+    this.p5.vertex(-r, r, -r);
+    this.p5.endShape(this.p5.CLOSE);
 
-    beginShape();
-    fill(colors[FRT]);
-    vertex(-r, -r, r);
-    vertex(r, -r, r);
-    vertex(r, r, r);
-    vertex(-r, r, r);
-    endShape(CLOSE);
+    this.p5.beginShape();
+    this.p5.fill(colors[FRT]);
+    this.p5.vertex(-r, -r, r);
+    this.p5.vertex(r, -r, r);
+    this.p5.vertex(r, r, r);
+    this.p5.vertex(-r, r, r);
+    this.p5.endShape(this.p5.CLOSE);
 
     // y-fixed
-    beginShape();
-    fill(colors[DWN]);
-    vertex(-r, -r, -r);
-    vertex(r, -r, -r);
-    vertex(r, -r, r);
-    vertex(-r, -r, r);
-    endShape(CLOSE);
+    this.p5.beginShape();
+    this.p5.fill(colors[DWN]);
+    this.p5.vertex(-r, -r, -r);
+    this.p5.vertex(r, -r, -r);
+    this.p5.vertex(r, -r, r);
+    this.p5.vertex(-r, -r, r);
+    this.p5.endShape(this.p5.CLOSE);
 
-    beginShape();
-    fill(colors[UPP]);
-    vertex(-r, r, -r);
-    vertex(r, r, -r);
-    vertex(r, r, r);
-    vertex(-r, r, r);
-    endShape(CLOSE);
+    this.p5.beginShape();
+    this.p5.fill(colors[UPP]);
+    this.p5.vertex(-r, r, -r);
+    this.p5.vertex(r, r, -r);
+    this.p5.vertex(r, r, r);
+    this.p5.vertex(-r, r, r);
+    this.p5.endShape(this.p5.CLOSE);
 
     // x-fixed
-    beginShape();
-    fill(colors[LFT]);
-    vertex(-r, -r, -r);
-    vertex(-r, r, -r);
-    vertex(-r, r, r);
-    vertex(-r, -r, r);
-    endShape(CLOSE);
+    this.p5.beginShape();
+    this.p5.fill(colors[LFT]);
+    this.p5.vertex(-r, -r, -r);
+    this.p5.vertex(-r, r, -r);
+    this.p5.vertex(-r, r, r);
+    this.p5.vertex(-r, -r, r);
+    this.p5.endShape(this.p5.CLOSE);
 
-    beginShape();
-    fill(colors[RGT]);
-    vertex(r, -r, -r);
-    vertex(r, r, -r);
-    vertex(r, r, r);
-    vertex(r, -r, r);
-    endShape(CLOSE);
+    this.p5.beginShape();
+    this.p5.fill(colors[RGT]);
+    this.p5.vertex(r, -r, -r);
+    this.p5.vertex(r, r, -r);
+    this.p5.vertex(r, r, r);
+    this.p5.vertex(r, -r, r);
+    this.p5.endShape(this.p5.CLOSE);
 
     //box(this.len);
-    pop();
+    this.p5.pop();
   }
 }
