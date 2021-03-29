@@ -1,51 +1,43 @@
-//import * as mat4 from "./Modules/mat4.js";
+import * as glMatrix from "./Modules/index.js";
+import { Cubie } from "./Cubie.js";
+import * as easyCam from "./Modules/p5.easycam.min.js";
 
-let cam;
+const s = (p) => {
 
-const UPP = 0;
-const DWN = 1;
-const RGT = 2;
-const LFT = 3;
-const FRT = 4;
-const BCK = 5;
+  let cam;
+  
+  const cube = [];
 
-const colors = [
-  '#FFFFFF',
-  '#FFFF00',
-  '#FFA500',
-  '#FF0000',
-  '#00FF00',
-  '#0000FF'
-];
+  p.setup = function() {
+    // Disable the context menu on the canvas so the camera can use the right mouse button
+    p.createCanvas(600, 600, p.WEBGL);
 
-const dim = 3;
-const cube = [];
+    /*cam = createEasyCam({
+      distance: 400
+    });*/
 
-function setup() {
-  // Disable the context menu on the canvas so the camera can use the right mouse button
-  createCanvas(600, 600, WEBGL).elt.oncontextmenu = () => false;
-
-  cam = createEasyCam({ distance: 400 });
-
-  let index = 0;
-  for (let i = 0; i < dim; i++) {
-    for (let j = 0; j < dim; j++) {
-      for (let k = 0; k < dim; k++) {
-        const len = 50;
-        const offset = (dim - 1) * len * 0.5;
-        const x = len * i - offset;
-        const y = len * j - offset;
-        const z = len * k - offset;
-        cube[index] = new Cubie(x, y, z, len);
-        index += 1;
+    let index = 0;
+    for (let i = 0; i < dim; i++) {
+      for (let j = 0; j < dim; j++) {
+        for (let k = 0; k < dim; k++) {
+          const len = 50;
+          const offset = (dim - 1) * len * 0.5;
+          const x = len * i - offset;
+          const y = len * j - offset;
+          const z = len * k - offset;
+          cube[index] = new Cubie(p, x, y, z, len);
+          index += 1;
+        }
       }
+    }
+  }
+
+  p.draw = function() {
+    p.background(51);
+    for (let i = 0; i < dim * dim * dim; i++) {
+      cube[i].show();
     }
   }
 }
 
-function draw() {
-  background(51);
-  for (let i = 0; i < dim*dim*dim; i++) {
-    cube[i].show();
-  }
-}
+let myp5 = new p5(s);
