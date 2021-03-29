@@ -1,11 +1,12 @@
 import * as glMatrix from "./Modules/index.js";
-import { Cubie } from "./Cubie.js";
 import * as easyCam from "./Modules/p5.easycam.min.js";
+import { Cubie } from "./Cubie.js";
+import { dim } from "./Constants.js";
 
 const s = (p) => {
 
   let cam;
-  
+
   const cube = [];
 
   p.setup = function() {
