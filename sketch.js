@@ -1,5 +1,4 @@
 import * as glMatrix from "./Modules/index.js";
-import * as easyCam from "./Modules/p5.easycam.min.js";
 import { Cubie } from "./Cubie.js";
 import { dim } from "./Constants.js";
 
@@ -13,9 +12,10 @@ const s = (p) => {
     // Disable the context menu on the canvas so the camera can use the right mouse button
     p.createCanvas(600, 600, p.WEBGL);
 
-    /*cam = createEasyCam({
+    //cam = new EasyCam(p.WEBGL, {distance: 400});
+    cam = p.createEasyCam({
       distance: 400
-    });*/
+    });
 
     let index = 0;
     for (let i = 0; i < dim; i++) {
