@@ -10,9 +10,8 @@ const s = (p) => {
 
   p.setup = function() {
     // Disable the context menu on the canvas so the camera can use the right mouse button
-    p.createCanvas(600, 600, p.WEBGL);
+    p.createCanvas(600, 600, p.WEBGL).elt.oncontextmenu = () => false;;
 
-    //cam = new EasyCam(p.WEBGL, {distance: 400});
     cam = p.createEasyCam({
       distance: 400
     });
