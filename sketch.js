@@ -2,12 +2,13 @@
 import * as mat4 from "./Modules/mat4.js";
 import { Cubie } from "./Cubie.js";
 import { dim } from "./Constants.js";
+import { turnX, turnY, turnZ, controls } from "./Turn.js";
 
 const s = (p) => {
 
   let cam;
 
-  const cube = [];
+  let cube = [];
 
   p.setup = function() {
     // Disable the context menu on the canvas so the camera can use the right mouse button
@@ -24,24 +25,26 @@ const s = (p) => {
         for (let z = -1; z <= 1; z++) {
           var matrix = mat4.create();
           mat4.translate(matrix, matrix, [x, y, z]);
-          cube[x+1][y+1][z+1] = new Cubie(p, matrix);
+          cube[x+1][y+1][z+1] = new Cubie(p, matrix, x, y, z);
         }
       }
     }
     cube[0][0][2].highlight();
     cube[0][0][0].highlight();
+    cube[0][0][1].highlight();
+  }
+
+  p.keyPressed = function() {
+    controls(p.key, cube);
   }
 
   p.draw = function() {
     p.background(51);
     p.scale(50);
-    for (var i = 0; i < dim; i++) {
-      for (var j = 0; j < dim; j++) {
-        for (var k = 0; k < dim; k++) {
+    for (let i = 0; i < dim; i++)
+      for (let j = 0; j < dim; j++)
+        for (let k = 0; k < dim; k++)
           cube[i][j][k].show();
-        }
-      }
-    }
   }
 }
 
