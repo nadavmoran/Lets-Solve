@@ -1,6 +1,6 @@
 //import { mat4 } from "./Modules/index.js";
 import * as mat4 from "./Modules/mat4.js";
-import { Cubie } from "./Cubie.js";
+import Cubie from "./Cubie.js";
 import { dim } from "./Constants.js";
 import { turnX, turnY, turnZ, controls } from "./Turn.js";
 
@@ -29,12 +29,6 @@ const s = (p) => {
         }
       }
     }
-    cube[0][0][2].highlight();
-    cube[0][0][0].highlight();
-    cube[0][0][1].highlight();
-    cube[2][2][0].highlight();
-    cube[2][1][0].highlight();
-    cube[2][0][0].highlight();
   }
 
   p.keyPressed = function() {
