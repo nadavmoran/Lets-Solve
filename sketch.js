@@ -18,11 +18,11 @@ const s = (p) => {
       distance: 400
     });
 
-    for (let x = -1; x <= 1; x++) {
+    for (let x = -1; x < dim-1; x++) {
       cube[x+1] = [];
-      for (let y = -1; y <= 1; y++) {
+      for (let y = -1; y < dim-1; y++) {
         cube[x+1][y+1] = []
-        for (let z = -1; z <= 1; z++) {
+        for (let z = -1; z < dim-1; z++) {
           var matrix = mat4.create();
           mat4.translate(matrix, matrix, [x, y, z]);
           cube[x+1][y+1][z+1] = new Cubie(p, matrix, x, y, z);
@@ -32,6 +32,9 @@ const s = (p) => {
     cube[0][0][2].highlight();
     cube[0][0][0].highlight();
     cube[0][0][1].highlight();
+    cube[2][2][0].highlight();
+    cube[2][1][0].highlight();
+    cube[2][0][0].highlight();
   }
 
   p.keyPressed = function() {
