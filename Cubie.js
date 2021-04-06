@@ -26,7 +26,7 @@ export class Cubie {
     if(this.highlight === 1)
       this.p5.fill(200, 0, 0);
     this.p5.stroke(0);
-    this.p5.strokeWeight(3.141592);
+    this.p5.strokeWeight(3);
     this.p5.push();
     this.p5.applyMatrix(this.matrix);
     this.p5.box(1);
