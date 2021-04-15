@@ -1,4 +1,3 @@
-
 export default class Face {
   constructor(p, normal, color) {
     this.p = p;

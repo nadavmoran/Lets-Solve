@@ -10,12 +10,18 @@ export default class Cubie {
     this.z = z;
 
     this.faces = [];
-    this.faces[0] = new Face(this.p, this.p.createVector(0, 0, 1), this.p.color(0, 255, 0));
-    this.faces[1] = new Face(this.p, this.p.createVector(0, 0, -1), this.p.color(0, 0, 255));
-    this.faces[2] = new Face(this.p, this.p.createVector(0, -1, 0), this.p.color(255, 255, 255));
-    this.faces[3] = new Face(this.p, this.p.createVector(0, 1, 0), this.p.color(255, 255, 0));
-    this.faces[4] = new Face(this.p, this.p.createVector(-1, 0, 0), this.p.color(255, 150, 0));
-    this.faces[5] = new Face(this.p, this.p.createVector(1, 0, 0), this.p.color(255, 0, 0));
+    if (this.z == -1)
+      this.faces.push(new Face(this.p, this.p.createVector(0, 0, -1), this.p.color(0, 0, 255)));
+    else if (this.z == 1)
+      this.faces.push(new Face(this.p, this.p.createVector(0, 0, 1), this.p.color(0, 255, 0)));
+    if (this.y == -1)
+      this.faces.push(new Face(this.p, this.p.createVector(0, -1, 0), this.p.color(255, 255, 255)));
+    else if (this.y == 1)
+      this.faces.push(new Face(this.p, this.p.createVector(0, 1, 0), this.p.color(255, 255, 0)));
+    if (this.x == -1)
+      this.faces.push(new Face(this.p, this.p.createVector(-1, 0, 0), this.p.color(255, 150, 0)));
+    else if (this.x == 1)
+      this.faces.push(new Face(this.p, this.p.createVector(1, 0, 0), this.p.color(255, 0, 0)));
   }
 
   update(x, y, z) {
