@@ -42,7 +42,7 @@ export default class Cube {
         qb.turnFacesX(direction * Math.PI / 2);
       }
     }
-    Cube.updateX(cube, updated_face, index+1);
+    Cube.updateX(this.cube, updated_face, index+1);
   }
 
   turnY(cube, index, direction) {
@@ -60,7 +60,7 @@ export default class Cube {
         qb.turnFacesY(direction * Math.PI / 2);
       }
     }
-    Cube.updateY(cube, updated_face, index+1);
+    Cube.updateY(this.cube, updated_face, index+1);
   }
 
   turnZ(cube, index, direction) {
@@ -69,7 +69,7 @@ export default class Cube {
       for (let y = 0; y < dim; y++) {
 
         var qb = this.cube[x][y][index+1];
-        var matrix = updateCords(qb.x, qb.y, direction);
+        var matrix = Cube.updateCords(qb.x, qb.y, direction);
         var new_x = Math.round(matrix[4]);
         var new_y = Math.round(matrix[5]);
 
@@ -78,7 +78,7 @@ export default class Cube {
         qb.turnFacesZ(direction * Math.PI / 2);
       }
     }
-    updateZ(cube, updated_face, index+1);
+    Cube.updateZ(this.cube, updated_face, index+1);
   }
 
   static updateCords(x, y, direction) {
@@ -91,18 +91,18 @@ export default class Cube {
   static updateX(cube, face, index) {
     for (var y = 0; y < dim; y++)
       for (var z = 0; z < dim; z++)
-        this.cube[index][y][z] = face[y][z];
+        cube[index][y][z] = face[y][z];
   }
 
   static updateY(cube, face, index) {
     for (var x = 0; x < dim; x++)
       for (var z = 0; z < dim; z++)
-        this.cube[x][index][z] = face[x][z];
+        cube[x][index][z] = face[x][z];
   }
 
   static updateZ(cube, face, index) {
     for (var x = 0; x < dim; x++)
       for (var y = 0; y < dim; y++)
-        this.cube[x][y][index] = face[x][y];
+        cube[x][y][index] = face[x][y];
   }
 }
