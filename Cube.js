@@ -34,7 +34,7 @@ export default class Cube {
           if (this.moving)
             this.turnAngle += turnSpeed * this.turnDirection;
 
-          if(qb.x == 1 && this.moving)
+          if(qb.x == this.index && this.moving)
              this.p.rotateX(this.turnAngle);
           // else if (j == 2 || j == 0)
           //   this.p.rotateY(this.turnAngle);
@@ -42,7 +42,7 @@ export default class Cube {
           //   this.p.rotateZ(this.turnAngle);
           qb.show();
 
-          if(qb.x == 1 && this.moving)
+          if(qb.x == this.index && this.moving)
             this.p.rotateX(this.turnAngle * -1);
           if(Math.abs(this.turnAngle) > Math.PI / 2) {
             this.moving = false;
