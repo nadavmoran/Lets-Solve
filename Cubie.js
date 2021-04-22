@@ -5,31 +5,29 @@ export default class Cubie {
   constructor(p, matrix, x, y, z) {
     this.p = p;
     this.matrix = matrix;
-    this.x = x;
-    this.y = y;
-    this.z = z;
+    this.cords = {x: x, y: y, z: z};
 
     this.faces = [];
-    if (this.z == -1)
+    if (this.cords['z'] == -1)
       this.faces.push(new Face(this.p, this.p.createVector(0, 0, -1), this.p.color(0, 0, 255)));
-    else if (this.z == 1)
+    else if (this.cords['z'] == 1)
       this.faces.push(new Face(this.p, this.p.createVector(0, 0, 1), this.p.color(0, 255, 0)));
-    if (this.y == -1)
+    if (this.cords['y'] == -1)
       this.faces.push(new Face(this.p, this.p.createVector(0, -1, 0), this.p.color(255, 255, 255)));
-    else if (this.y == 1)
+    else if (this.cords['y'] == 1)
       this.faces.push(new Face(this.p, this.p.createVector(0, 1, 0), this.p.color(255, 255, 0)));
-    if (this.x == -1)
+    if (this.cords['x'] == -1)
       this.faces.push(new Face(this.p, this.p.createVector(-1, 0, 0), this.p.color(255, 150, 0)));
-    else if (this.x == 1)
+    else if (this.cords['x'] == 1)
       this.faces.push(new Face(this.p, this.p.createVector(1, 0, 0), this.p.color(255, 0, 0)));
   }
 
   update(x, y, z) {
     mat4.identity(this.matrix);
     mat4.translate(this.matrix, this.matrix, [x, y, z]);
-    this.x = x;
-    this.y = y;
-    this.z = z;
+    this.cords['x'] = x;
+    this.cords['y'] = y;
+    this.cords['z'] = z;
   }
 
   show() {
