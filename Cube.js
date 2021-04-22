@@ -11,7 +11,7 @@ export default class Cube {
     this.turnAngle = 0;
     this.turnDirection = 1;
     this.index = 0;
-    this.stop = true;
+    this.moving = false;
 
     for (let x = -1; x < dim - 1; x++) {
       this.cube[x + 1] = [];
@@ -30,10 +30,11 @@ export default class Cube {
     for (let i = 0; i < dim; i++)
       for (let j = 0; j < dim; j++)
         for (let k = 0; k < dim; k++) {
-          this.turnAngle += turnSpeed * this.turnDirection;
           var qb = this.cube[i][j][k];
+          if (this.moving)
+            this.turnAngle += turnSpeed * this.turnDirection;
 
-          if(qb.x == 1 && !this.stop)
+          if(qb.x == 1 && this.moving)
              this.p.rotateX(this.turnAngle);
           // else if (j == 2 || j == 0)
           //   this.p.rotateY(this.turnAngle);
@@ -41,11 +42,12 @@ export default class Cube {
           //   this.p.rotateZ(this.turnAngle);
           qb.show();
 
-          if(qb.x == 1 && !this.stop)
+          if(qb.x == 1 && this.moving)
             this.p.rotateX(this.turnAngle * -1);
           if(Math.abs(this.turnAngle) > Math.PI / 2) {
-            this.stop = true;
-            //this.turnX(this);
+            this.moving = false;
+            this.turnAngle = 0;
+            this.updateX();
           }
           // else if (j == 2 || j == 0)
           //   this.p.rotateY(this.turnAngle * -1);
@@ -54,29 +56,28 @@ export default class Cube {
         }
   }
 
-  // turnX(index, direction) {
-  //   this.stop = false;
-  //   this.turnAngle = 0;
-  //   this.index = index;
-  //   this.turnDirection = direction;
-  // }
-
   turnX(index, direction) {
+    this.moving = true;
+    this.index = index;
+    this.turnDirection = direction;
+  }
+
+  updateX() {
     let updated_face = [[], [], []];
     for (let y = 0; y < dim; y++) {
       for (let z = 0; z < dim; z++) {
 
-        var qb = this.cube[index+1][y][z];
-        var matrix = Cube.updateCords(qb.y, qb.z, direction);
+        var qb = this.cube[this.index+1][y][z];
+        var matrix = Cube.updateCords(qb.y, qb.z, this.turnDirection);
         var new_y = Math.round(matrix[4]);
         var new_z = Math.round(matrix[5]);
 
         updated_face[new_y+1][new_z+1] = qb;
         qb.update(Math.round(qb.x), new_y, new_z);
-        qb.turnFacesX(direction * Math.PI / 2);
+        qb.turnFacesX(this.turnDirection * Math.PI / 2);
       }
     }
-    updateCubeMatrix['x'](this.cube, updated_face, index+1);
+    updateCubeMatrix['x'](this.cube, updated_face, this.index+1);
   }
 
   turnY(index, direction) {
