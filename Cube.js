@@ -50,10 +50,10 @@ export default class Cube {
         }
   }
 
-  turnX(index, direction) {
+  turn(axis, index, direction) {
     this.moving = true;
     this.turnIndex = index;
-    this.turnAxis = 'x';
+    this.turnAxis = axis;
     this.turnDirection = direction;
   }
 
