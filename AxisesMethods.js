@@ -1,4 +1,6 @@
-export let updateCube = {x: updateX, y: updateY, z: updateZ};
+import { dim } from "./Constants.js";
+
+export let updateCubeMatrix = {x: updateX, y: updateY, z: updateZ};
 
 function updateX(cube, face, index) {
   for (var y = 0; y < dim; y++)
