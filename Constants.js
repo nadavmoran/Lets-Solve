@@ -1,5 +1,5 @@
 export const dim = 3;
-export const turnSpeed = Math.PI / (180 * 20);
+export const turnSpeed = Math.PI / (180 * 10);
 
 export function controls(key, cube) {
   if (key == 'r') {
