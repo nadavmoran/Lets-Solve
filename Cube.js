@@ -1,11 +1,13 @@
 import * as mat4 from "./Modules/mat4.js";
 import * as mat2d from "./Modules/mat2d.js";
+import { updateCube } from "./AxisesMethods.js";
 import { dim } from "./Constants.js";
 import Cubie from "./Cubie.js";
 
 export default class Cube {
   constructor(p) {
     this.cube = [];
+    this.p = p;
 
     for (let x = -1; x < dim - 1; x++) {
       this.cube[x + 1] = [];
@@ -23,8 +25,13 @@ export default class Cube {
   show() {
     for (let i = 0; i < dim; i++)
       for (let j = 0; j < dim; j++)
-        for (let k = 0; k < dim; k++)
+        for (let k = 0; k < dim; k++) {
+          if(i == 2)
+            this.p.rotateX(Math.PI / 4);
           this.cube[i][j][k].show();
+          if(i == 2)
+            this.p.rotateX(Math.PI / -4);
+        }
   }
 
   turnX(cube, index, direction) {
@@ -39,10 +46,10 @@ export default class Cube {
 
         updated_face[new_y+1][new_z+1] = qb;
         qb.update(Math.round(qb.x), new_y, new_z);
-        qb.turnFacesX(direction * Math.PI / 2);
+        qb.turnFaces(direction * Math.PI / 2, 'x');
       }
     }
-    Cube.updateX(this.cube, updated_face, index+1);
+    updateCube['x'](this.cube, updated_face, index+1);
   }
 
   turnY(cube, index, direction) {
@@ -57,10 +64,10 @@ export default class Cube {
 
         updated_face[new_x+1][new_z+1] = qb;
         qb.update(new_x, Math.round(qb.y), new_z);
-        qb.turnFacesY(direction * Math.PI / 2);
+        qb.turnFaces(direction * Math.PI / 2, 'y');
       }
     }
-    Cube.updateY(this.cube, updated_face, index+1);
+    updateCube['y'](this.cube, updated_face, index+1);
   }
 
   turnZ(cube, index, direction) {
@@ -75,10 +82,10 @@ export default class Cube {
 
         updated_face[new_x+1][new_y+1] = qb;
         qb.update(new_x, new_y, Math.round(qb.z));
-        qb.turnFacesZ(direction * Math.PI / 2);
+        qb.turnFaces(direction * Math.PI / 2, 'z');
       }
     }
-    Cube.updateZ(this.cube, updated_face, index+1);
+    updateCube['z'](this.cube, updated_face, index+1);
   }
 
   static updateCords(x, y, direction) {
@@ -86,23 +93,5 @@ export default class Cube {
     mat2d.rotate(matrix, matrix, direction * Math.PI / 2);
     mat2d.translate(matrix, matrix, [x, y]);
     return matrix;
-  }
-
-  static updateX(cube, face, index) {
-    for (var y = 0; y < dim; y++)
-      for (var z = 0; z < dim; z++)
-        cube[index][y][z] = face[y][z];
-  }
-
-  static updateY(cube, face, index) {
-    for (var x = 0; x < dim; x++)
-      for (var z = 0; z < dim; z++)
-        cube[x][index][z] = face[x][z];
-  }
-
-  static updateZ(cube, face, index) {
-    for (var x = 0; x < dim; x++)
-      for (var y = 0; y < dim; y++)
-        cube[x][y][index] = face[x][y];
   }
 }

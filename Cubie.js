@@ -45,21 +45,10 @@ export default class Cubie {
     this.p.pop();
   }
 
-  turnFacesX(angle) {
+  turnFaces(angle, axis) {
     for (let face of this.faces) {
-      face.turnX(angle);
-    }
-  }
-
-  turnFacesY(angle) {
-    for (let face of this.faces) {
-      face.turnY(angle);
-    }
-  }
-
-  turnFacesZ(angle) {
-    for (let face of this.faces) {
-      face.turnZ(angle);
+      face.turn[axis](angle);
     }
   }
 }
++------------

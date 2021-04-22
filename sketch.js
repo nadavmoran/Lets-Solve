@@ -22,7 +22,7 @@ const s = (p) => {
   p.draw = function() {
     p.background(51);
     p.scale(50);
-    cube.show()
+    cube.show();
   }
 }
 

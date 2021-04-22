@@ -21,6 +21,8 @@ export default class Face {
     this.p.pop();
   }
 
+  turn = {x: turnX, y: turnY, z: turnZ};
+
   turnX(angle) {
     var vector = this.p.createVector();
     vector.y = Math.round(this.normal.y * Math.cos(angle) - this.normal.z * Math.sin(angle));
