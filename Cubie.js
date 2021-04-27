@@ -1,4 +1,4 @@
-import { mat4 } from "./Modules/index.js";
+import { mat4 } from "./MathModules/index.js";
 import Face from "./Face.js";
 
 export default class Cubie {

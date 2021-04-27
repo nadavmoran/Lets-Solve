@@ -1,5 +1,5 @@
-import * as mat4 from "./Modules/mat4.js";
-import * as mat2d from "./Modules/mat2d.js";
+import * as mat4 from "./MathModules/mat4.js";
+import * as mat2d from "./MathModules/mat2d.js";
 import { updateCubeMatrix } from "./AxisesMethods.js";
 import { dim, turnSpeed } from "./Constants.js";
 import Cubie from "./Cubie.js";
