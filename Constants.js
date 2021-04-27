@@ -2,6 +2,9 @@ export const dim = 3;
 export const turnSpeed = Math.PI / (180 * 10);
 
 export function controls(key, cube) {
+  if (cube.moving)
+    cube.finishTurn();
+  
   if (key == 'r') {
     cube.turn('x', 1, 1);
   }

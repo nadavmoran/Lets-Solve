@@ -45,10 +45,8 @@ export default class Cube {
           if(qb.cords[this.turnAxis] == this.turnIndex && this.moving)
             this.rotate(this.turnAngle * -1);
 
-          if(Math.abs(this.turnAngle) > Math.PI / 2) {
-            this.moving = false;
-            this.turnAngle = 0;
-            this.update();
+          if(Math.abs(this.turnAngle) >= Math.PI / 2) {
+            this.finishTurn();
           }
         }
   }
@@ -60,6 +58,11 @@ export default class Cube {
     this.turnDirection = direction;
   }
 
+  finishTurn() {
+    this.moving = false;
+    this.turnAngle = 0;
+    this.update();
+  }
   rotate(angle) {
     if (this.turnAxis == 'x')
       this.p.rotateX(angle);
