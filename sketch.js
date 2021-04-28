@@ -19,8 +19,8 @@ const s = (p) => {
       distance: 400
     });
     cube = new Cube(p);
-    p.textFont(font);
-    p.textSize(20);
+    // p.textFont(font);
+    // p.textSize(20);
   }
 
   p.keyPressed = function() {
