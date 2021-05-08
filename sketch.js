@@ -1,12 +1,18 @@
 import Cube from "./Cube.js";
 import { controls } from "./Constants.js";
 
+//const timer = document.getElementById('timer');
+
 const s = (p) => {
 
   let cam;
   let cube;
   let font;
   let solvedCube = new Cube(p);
+
+  p.preload = function() {
+    font = p.loadFont('assets/Typographica-Blp5.ttf');
+  }
 
   p.setup = function() {
     // Disable the context menu on the canvas so the camera can use the right mouse button
@@ -15,6 +21,7 @@ const s = (p) => {
       distance: 400
     });
     cube = new Cube(p);
+
   }
 
   p.keyPressed = function() {
