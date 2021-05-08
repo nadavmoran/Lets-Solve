@@ -1,8 +1,6 @@
 import Cube from "./Cube.js";
 import { controls } from "./Constants.js";
 
-//const timer = document.getElementById('timer');
-
 const s = (p) => {
 
   let cam;
