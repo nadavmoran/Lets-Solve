@@ -8,10 +8,6 @@ const s = (p) => {
   let font;
   let solvedCube = new Cube(p);
 
-  p.preload = function() {
-    font = p.loadFont('assets/Typographica-Blp5.ttf');
-  }
-
   p.setup = function() {
     // Disable the context menu on the canvas so the camera can use the right mouse button
     p.createCanvas(600, 600, p.WEBGL).elt.oncontextmenu = () => false;
@@ -19,8 +15,6 @@ const s = (p) => {
       distance: 400
     });
     cube = new Cube(p);
-    // p.textFont(font);
-    // p.textSize(20);
   }
 
   p.keyPressed = function() {
@@ -29,7 +23,6 @@ const s = (p) => {
 
   p.draw = function() {
     p.background(51);
-    //p.text('hello world', 50, 50);
     p.scale(50);
     cube.show();
   }
