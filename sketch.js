@@ -8,10 +8,6 @@ const s = (p) => {
   let font;
   let solvedCube = new Cube(p);
 
-  p.preload = function() {
-    font = p.loadFont('assets/Typographica-Blp5.ttf');
-  }
-
   p.setup = function() {
     // Disable the context menu on the canvas so the camera can use the right mouse button
     p.createCanvas(600, 600, p.WEBGL).elt.oncontextmenu = () => false;
