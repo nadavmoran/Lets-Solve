@@ -3,6 +3,7 @@ const timer = document.getElementById('timer');
 var min = 0;
 var sec = 0;
 var milli = 0;
+var timerText;
 var stoptime = true;
 
 function startTimer() {
@@ -48,16 +49,26 @@ function timerCycle() {
       min = '0' + min;
     }
 
-    timer.innerHTML = min + ':' + sec + '.' + milli;
+    timerText = min + ':' + sec + '.' + milli;
+    timer.innerHTML = timerText;
 
     setTimeout("timerCycle()", 100);
   }
 }
 
 function resetTimer() {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ timerText })
+  };
+  fetch('/api', options);
   milli = 0;
   sec = 0;
   min = 0;
   stopTimer();
-  timer.innerHTML = '00:00.00';
+  timerText = '00:00.00';
+  timer.innerHTML = timerText;
 }
