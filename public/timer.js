@@ -3,7 +3,7 @@ const timer = document.getElementById('timer');
 var min = 0;
 var sec = 0;
 var milli = 0;
-var timerText;
+var time;
 var stoptime = true;
 
 function startTimer() {
@@ -49,8 +49,8 @@ function timerCycle() {
       min = '0' + min;
     }
 
-    timerText = min + ':' + sec + '.' + milli;
-    timer.innerHTML = timerText;
+    time = min + ':' + sec + '.' + milli;
+    timer.innerHTML = time;
 
     setTimeout("timerCycle()", 100);
   }
@@ -62,13 +62,13 @@ function resetTimer() {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ timerText })
+    body: JSON.stringify({ time })
   };
   fetch('/api', options);
   milli = 0;
   sec = 0;
   min = 0;
   stopTimer();
-  timerText = '00:00.00';
-  timer.innerHTML = timerText;
+  time = '00:00.00';
+  timer.innerHTML = time;
 }
