@@ -49,7 +49,9 @@ function timerCycle() {
       min = '0' + min;
     }
 
-    time = min + ':' + sec + '.' + milli;
+    time = sec + '.' + milli;
+    if (min != 0)
+      time = min + ':' + time;
     timer.innerHTML = time;
 
     setTimeout("timerCycle()", 100);
