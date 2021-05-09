@@ -5,5 +5,5 @@ app.use(express.static('public'));
 app.use(express.json({ limit: '1mb' }));
 app.post('/api', (request, response) => {
   const data = request.body;
-  console.log(data);
+  console.log(data.time);
 });
