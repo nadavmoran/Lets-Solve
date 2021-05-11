@@ -42,13 +42,6 @@ function timerCycle() {
       sec = 0;
     }
 
-    if (sec < 10 || sec == 0) {
-      sec = '0' + sec;
-    }
-    if (min < 10 || min == 0) {
-      min = '0' + min;
-    }
-
     time = sec + '.' + milli;
     if (min != 0)
       time = min + ':' + time;
@@ -71,6 +64,6 @@ function resetTimer() {
   sec = 0;
   min = 0;
   stopTimer();
-  time = '00.00';
+  time = '0.00';
   timer.innerHTML = time;
 }
