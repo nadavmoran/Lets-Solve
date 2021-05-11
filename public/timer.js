@@ -71,6 +71,6 @@ function resetTimer() {
   sec = 0;
   min = 0;
   stopTimer();
-  time = '00:00.00';
+  time = '00.00';
   timer.innerHTML = time;
 }
