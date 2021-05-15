@@ -59,6 +59,8 @@ function resetTimer() {
     },
     body: JSON.stringify({ time })
   };
+  // let response = await fetch('/api', options);
+  // let data = await response.json();
   fetch('/api', options);
   milli = 0;
   sec = 0;
@@ -66,4 +68,5 @@ function resetTimer() {
   stopTimer();
   time = '0.00';
   timer.innerHTML = time;
+
 }
