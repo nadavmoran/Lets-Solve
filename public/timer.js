@@ -52,12 +52,13 @@ function timerCycle() {
 }
 
 function resetTimer() {
+  var data = { name: 'shelly', result: time };
   const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ time })
+    body: JSON.stringify(data)
   };
   // let response = await fetch('/api', options);
   // let data = await response.json();
@@ -68,5 +69,4 @@ function resetTimer() {
   stopTimer();
   time = '0.00';
   timer.innerHTML = time;
-
 }
