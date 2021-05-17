@@ -1,4 +1,4 @@
-import { cartesian } from './tools';
+import { cartesian } from './tools.js';
 
 /**
  * A pruning table gives a lower bound on the number of moves

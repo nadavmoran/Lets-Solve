@@ -1,5 +1,5 @@
-import { parseAlgorithm } from './algorithms';
-import { rotateParts } from './tools';
+import { parseAlgorithm } from './algorithms.js';
+import { rotateParts } from './tools.js';
 
 export const Edges = {
   UR: 0,

@@ -1,4 +1,4 @@
-import { factorial, choose } from './tools';
+import { factorial, choose } from './tools.js';
 
 /**
  * In-place rotation of the subarray determined by the two

@@ -2,11 +2,11 @@ import {
   getPermutationFromIndex,
   getOrientationFromIndex,
   getParity,
-} from '../coordinates';
+} from './coordinates.js';
 
-import { getRandomInt } from '../tools';
+import { getRandomInt } from './tools.js';
 
-import { solveCoordinates } from '../solvers/kociemba';
+import { solveCoordinates } from './kociemba.js';
 
 /**
  * Generates a random state 3x3 cube and solves it. The state is created

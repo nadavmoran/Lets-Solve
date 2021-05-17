@@ -1,6 +1,6 @@
-import { parseAlgorithm, formatAlgorithm, invertAlgorithm } from './algorithms';
-import PruningTable from './PruningTable';
-import { allMoves } from './cube';
+import { parseAlgorithm, formatAlgorithm, invertAlgorithm } from './algorithms.js';
+import PruningTable from './PruningTable.js';
+import { allMoves } from './cube.js';
 
 class Search {
   constructor(createTables, moves = allMoves) {

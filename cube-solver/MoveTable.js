@@ -3,7 +3,7 @@ import {
   getIndexFromPermutation,
   getOrientationFromIndex,
   getIndexFromOrientation,
-} from './coordinates';
+} from './coordinates.js';
 
 import {
   edgePermutationMove,
@@ -11,9 +11,9 @@ import {
   edgeOrientationMove,
   cornerOrientationMove,
   allMoves,
-} from './cube';
+} from './cube.js';
 
-import { factorial } from './tools';
+import { factorial } from './tools.js';
 
 /**
  * Create a function which performs a move on a coordinate.

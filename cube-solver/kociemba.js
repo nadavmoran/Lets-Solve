@@ -3,7 +3,7 @@ import {
   getPermutationFromIndex,
   getIndexFromOrientation,
   getParity,
-} from '../coordinates';
+} from './coordinates.js';
 
 import {
   MoveTable,
@@ -11,9 +11,9 @@ import {
   createCornerPermutationTable,
   createEdgeOrientationTable,
   createCornerOrientationTable,
-} from '../MoveTable';
+} from './MoveTable.js';
 
-import Search from '../Search';
+import Search from './Search.js';
 
 // In phase two, only quarter moves of U and D and double turns of
 // all the other faces are allowed, in order to keep the cube in
