@@ -8,7 +8,6 @@ export default class Cube {
   constructor(p) {
     this.cube = [];
     this.p = p;
-    //this.rotateAxises = {x: p.rotateX, y: p.rotateY, z: p.rotateZ};
 
     this.turnAngle = 0;
     this.turnDirection = 1;
@@ -16,7 +15,6 @@ export default class Cube {
     this.turnIndex = 0;
     this.moving = false;
 
-    let a = 'hello';
     for (let x = -1; x < dim - 1; x++) {
       this.cube[x + 1] = [];
       for (let y = -1; y < dim - 1; y++) {
