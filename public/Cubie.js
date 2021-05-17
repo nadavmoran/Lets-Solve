@@ -3,6 +3,7 @@ import Face from "./Face.js";
 
 /**
  * The class represents each cubie of the cube
+ * @param faces {face} array of faces for drawing the cubie colors
  */
 export default class Cubie {
   /**
