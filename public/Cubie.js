@@ -1,20 +1,19 @@
-import { mat4 } from "./MathModules/index.js";
+import {mat4} from "./MathModules/index.js";
 import Face from "./Face.js";
 
 /**
-* The class represents each cubie of the cube
-*/
+ * The class represents each cubie of the cube
+ */
 export default class Cubie {
-
   /**
-  * Sets some variables and builds the faces array
-  *  base on the piece position and type
-  * @param p p5.js instatnce
-  * @param matrix {array} 3 dimentional matrix to represent the cubie
-  * @param x {number} position of the cubie
-  * @param y {number} position of the cubie
-  * @param z {number} position of the cubie
-  */
+   * Sets some variables and builds the faces array
+   *  base on the piece position and type
+   * @param p p5.js instatnce
+   * @param matrix {array} 3 dimentional matrix to represent the cubie
+   * @param x {number} position of the cubie
+   * @param y {number} position of the cubie
+   * @param z {number} position of the cubie
+   */
   constructor(p, matrix, x, y, z) {
     this.p = p;
     this.matrix = matrix;
@@ -23,36 +22,60 @@ export default class Cubie {
 
     // Add the faces base on the cubie position and type
     if (z == -1)
-      this.faces.push(new Face(this.p, this.p.createVector(0, 0, -1), this.p.color(0, 0, 255)));
+      this.faces.push(
+        new Face(this.p, this.p.createVector(0, 0, -1), this.p.color(0, 0, 255))
+      );
     else if (z == 1)
-      this.faces.push(new Face(this.p, this.p.createVector(0, 0, 1), this.p.color(0, 255, 0)));
+      this.faces.push(
+        new Face(this.p, this.p.createVector(0, 0, 1), this.p.color(0, 255, 0))
+      );
     if (y == -1)
-      this.faces.push(new Face(this.p, this.p.createVector(0, -1, 0), this.p.color(255, 255, 255)));
+      this.faces.push(
+        new Face(
+          this.p,
+          this.p.createVector(0, -1, 0),
+          this.p.color(255, 255, 255)
+        )
+      );
     else if (y == 1)
-      this.faces.push(new Face(this.p, this.p.createVector(0, 1, 0), this.p.color(255, 255, 0)));
+      this.faces.push(
+        new Face(
+          this.p,
+          this.p.createVector(0, 1, 0),
+          this.p.color(255, 255, 0)
+        )
+      );
     if (x == -1)
-      this.faces.push(new Face(this.p, this.p.createVector(-1, 0, 0), this.p.color(255, 150, 0)));
+      this.faces.push(
+        new Face(
+          this.p,
+          this.p.createVector(-1, 0, 0),
+          this.p.color(255, 150, 0)
+        )
+      );
     else if (x == 1)
-      this.faces.push(new Face(this.p, this.p.createVector(1, 0, 0), this.p.color(255, 0, 0)));
+      this.faces.push(
+        new Face(this.p, this.p.createVector(1, 0, 0), this.p.color(255, 0, 0))
+      );
   }
 
   /**
-  * Updates the position of the cubie
-  * @param x {number} position updates position of the cubie
-  * @param y {number} position updates position of the cubie
-  * @param z {number} position updates position of the cubie
-  */
+   * Updates the position of the cubie
+   * @param x {number} position updates position of the cubie
+   * @param y {number} position updates position of the cubie
+   * @param z {number} position updates position of the cubie
+   */
   update(x, y, z) {
     mat4.identity(this.matrix);
     mat4.translate(this.matrix, this.matrix, [x, y, z]);
-    this.cords['x'] = x;
-    this.cords['y'] = y;
-    this.cords['z'] = z;
+    this.cords["x"] = x;
+    this.cords["y"] = y;
+    this.cords["z"] = z;
   }
 
   /**
-  * Draws the cubie
-  */
+   * Draws the cubie
+   */
   show() {
     // Sets some parameters before drawing
     this.p.noFill();
@@ -71,9 +94,9 @@ export default class Cubie {
   }
 
   /**
-  * Turns all the cubie faces in the x axis
-  * @param angle {number} angle to rotate the face
-  */
+   * Turns all the cubie faces in the x axis
+   * @param angle {number} angle to rotate the face
+   */
   turnFacesX(angle) {
     for (let face of this.faces) {
       face.turnX(angle);
@@ -81,9 +104,9 @@ export default class Cubie {
   }
 
   /**
-  * Turns all the cubie faces in the x axis
-  * @param angle {number} angle to rotate the face
-  */
+   * Turns all the cubie faces in the x axis
+   * @param angle {number} angle to rotate the face
+   */
   turnFacesY(angle) {
     for (let face of this.faces) {
       face.turnY(angle);
@@ -91,9 +114,9 @@ export default class Cubie {
   }
 
   /**
-  * Turns all the cubie faces in the x axis
-  * @param angle {number} angle to rotate the face
-  */
+   * Turns all the cubie faces in the x axis
+   * @param angle {number} angle to rotate the face
+   */
   turnFacesZ(angle) {
     for (let face of this.faces) {
       face.turnZ(angle);

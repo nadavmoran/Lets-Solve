@@ -60,8 +60,8 @@ function timerCycle() {
 }
 
 /**
-* Resets the timer
-*/
+ * Resets the timer
+ */
 function resetTimer() {
   milli = 0;
   sec = 0;
@@ -72,8 +72,8 @@ function resetTimer() {
 }
 
 /**
-* Sends the time to the server
-*/
+ * Sends the time to the server
+ */
 function sendData() {
   var data = {name: "shelly", result: time};
 

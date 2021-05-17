@@ -36,9 +36,9 @@ export default class Face {
   }
 
   /**
-  * Turns the face vector in the x axis
-  * @param angle {number} angle The angle to rotate the face
-  */
+   * Turns the face vector in the x axis
+   * @param angle {number} angle The angle to rotate the face
+   */
   turnX(angle) {
     var vector = this.p.createVector();
     vector.y = Math.round(
@@ -52,9 +52,9 @@ export default class Face {
   }
 
   /**
-  * Turns the face vector in the y axis
-  * @param angle {number} angle The angle to rotate the face
-  */
+   * Turns the face vector in the y axis
+   * @param angle {number} angle The angle to rotate the face
+   */
   turnY(angle) {
     var vector = this.p.createVector();
     vector.x = Math.round(
@@ -68,9 +68,9 @@ export default class Face {
   }
 
   /**
-  * Turns the face vector in the z axis
-  * @param angle {number} angle The angle to rotate the face
-  */
+   * Turns the face vector in the z axis
+   * @param angle {number} angle The angle to rotate the face
+   */
   turnZ(angle) {
     var vector = this.p.createVector();
     vector.x = Math.round(
