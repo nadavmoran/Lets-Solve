@@ -6,8 +6,8 @@ export default class Cubie {
     this.p = p;
     this.matrix = matrix;
     this.cords = {x: x, y: y, z: z};
-
     this.faces = [];
+    
     if (z == -1)
       this.faces.push(new Face(this.p, this.p.createVector(0, 0, -1), this.p.color(0, 0, 255)));
     else if (z == 1)
