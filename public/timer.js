@@ -1,4 +1,4 @@
-const timer = document.getElementById('timer');
+const timer = document.getElementById("timer");
 
 var min = 0;
 var sec = 0;
@@ -6,21 +6,30 @@ var milli = 0;
 var time;
 var stoptime = true;
 
+/**
+ * Starts the time
+ */
 function startTimer() {
   if (stoptime == true) {
-        stoptime = false;
-        timerCycle();
-    }
+    stoptime = false;
+    timerCycle();
+  }
 }
 
+/**
+ * Stops the timer
+ */
 function stopTimer() {
   if (stoptime == false) {
     stoptime = true;
   }
 }
 
+/**
+ * Continuously updates the timer when the timer is enabled
+ */
 function timerCycle() {
-    if (stoptime == false) {
+  if (stoptime == false) {
     milli = parseInt(milli);
     sec = parseInt(sec);
     min = parseInt(min);
@@ -42,31 +51,40 @@ function timerCycle() {
       sec = 0;
     }
 
-    time = sec + '.' + milli;
-    if (min != 0)
-      time = min + ':' + time;
+    time = sec + "." + milli;
+    if (min != 0) time = min + ":" + time;
     timer.innerHTML = time;
 
     setTimeout("timerCycle()", 100);
   }
 }
 
+/**
+* Resets the timer
+*/
 function resetTimer() {
-  var data = { name: 'shelly', result: time };
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  };
-  // let response = await fetch('/api', options);
-  // let data = await response.json();
-  fetch('/api', options);
   milli = 0;
   sec = 0;
   min = 0;
   stopTimer();
-  time = '0.00';
+  time = "0.00";
   timer.innerHTML = time;
+}
+
+/**
+* Sends the time to the server
+*/
+function sendData() {
+  var data = {name: "shelly", result: time};
+
+  //The headers for sending the data
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  };
+
+  fetch("/time", options);
 }

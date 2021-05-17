@@ -8,7 +8,7 @@ const results = {results: []};
 app.use(express.static('public'));
 app.use(express.json({ limit: '1mb' }));
 
-app.post('/api', (request, response) => {
+app.post('/time', (request, response) => {
   var data = request.body;
   console.log(data, typeof(data));
   results.name = data.name;
