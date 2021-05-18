@@ -22,42 +22,42 @@ export default class Cubie {
     this.faces = [];
 
     // Add the faces base on the cubie position and type
-    if (z == -1)
+    if (z == -1) {
       this.faces.push(
         new Face(this.p, this.p.createVector(0, 0, -1), this.p.color(0, 0, 255))
       );
-    else if (z == 1)
+    } else if (z == 1) {
       this.faces.push(
         new Face(this.p, this.p.createVector(0, 0, 1), this.p.color(0, 255, 0))
       );
-    if (y == -1)
+    }
+    if (y == -1) {
       this.faces.push(
         new Face(
           this.p,
           this.p.createVector(0, -1, 0),
-          this.p.color(255, 255, 255)
-        )
+          this.p.color(255, 255, 255))
       );
-    else if (y == 1)
+    } else if (y == 1) {
       this.faces.push(
         new Face(
           this.p,
           this.p.createVector(0, 1, 0),
-          this.p.color(255, 255, 0)
-        )
+          this.p.color(255, 255, 0))
       );
-    if (x == -1)
+    }
+    if (x == -1) {
       this.faces.push(
         new Face(
           this.p,
           this.p.createVector(-1, 0, 0),
-          this.p.color(255, 150, 0)
-        )
+          this.p.color(255, 150, 0))
       );
-    else if (x == 1)
+    } else if (x == 1) {
       this.faces.push(
         new Face(this.p, this.p.createVector(1, 0, 0), this.p.color(255, 0, 0))
       );
+    }
   }
 
   /**
