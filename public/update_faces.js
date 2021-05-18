@@ -1,4 +1,4 @@
-import {dim} from "./Constants.js";
+import {dim} from "./constants.js";
 
 export let updateCubeFace = {x: updateX, y: updateY, z: updateZ};
 

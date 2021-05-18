@@ -1,5 +1,5 @@
 import {mat4} from "./MathModules/index.js";
-import Face from "./Face.js";
+import Face from "./face.js";
 
 /**
  * The class represents each cubie of the cube

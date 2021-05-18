@@ -1,5 +1,5 @@
-import Cube from "./Cube.js";
-import {controls} from "./Constants.js";
+import Cube from "./cube.js";
+import {controls} from "./constants.js";
 
 const s = p => {
   let cam;
