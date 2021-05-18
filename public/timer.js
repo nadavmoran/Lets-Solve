@@ -64,10 +64,11 @@ function timerCycle() {
  * Resets the timer
  */
 function resetTimer() {
+  stopTimer();
+  sendData();
   milli = 0;
   sec = 0;
   min = 0;
-  stopTimer();
   time = "0.00";
   timer.innerHTML = time;
 }
