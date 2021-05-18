@@ -15,7 +15,7 @@ import { solveCoordinates } from './solver.js';
  * of the cube. This guarantees valid orientations, but we have to
  * ensure the parity of the generated cube is valid.
  */
-const getRandomScramble = () => {
+export default function getRandomScramble() {
   let eo;
   let ep;
   let co;
@@ -41,5 +41,3 @@ const getRandomScramble = () => {
 
   return solveCoordinates(eo, ep, co, cp);
 };
-
-export default getRandomScramble;
