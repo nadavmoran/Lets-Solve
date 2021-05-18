@@ -12,8 +12,7 @@ import { solveCoordinates } from './solver.js';
  * Generates a random state 3x3 cube and solves it. The state is created
  * by generating random numbers and using the coordinate definitions
  * to restore the vectors describing the orientations and permutations
- * of the cube. This guarantees valid orientations, but we have to
- * ensure the parity of the generated cube is valid.
+ * of the cube while ensuring the parity is valid.
  */
 export default function getRandomScramble() {
   let eo;
