@@ -15,7 +15,7 @@ const server = app.listen(port, () =>
 );
 const io = require("socket.io")(server);
 
-const results = {results: []};
+const results = {};
 
 // Loading the code to pass to the client
 app.use(express.static("public"));
@@ -24,9 +24,9 @@ app.use(express.json({limit: "1mb"}));
 // Gets the result
 app.post("/time", (request, response) => {
   var data = request.body;
-  console.log(data, typeof data);
-  results.name = data.name;
-  results.results.push(data.result);
+  var name = data.name;
+  if (!results[name]) results[name] = [];
+  results.push(data.result);
   // Broadcast the result to all connected clients
   io.sockets.emit("broadcast", results);
 });
