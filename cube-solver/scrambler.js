@@ -6,7 +6,7 @@ import {
 
 import { getRandomInt } from './tools.js';
 
-import { solveCoordinates } from './kociemba.js';
+import { solveCoordinates } from './solver.js';
 
 /**
  * Generates a random state 3x3 cube and solves it. The state is created

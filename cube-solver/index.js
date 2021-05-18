@@ -1,5 +1,5 @@
-import kociemba, { phaseOne, phaseTwo } from './kociemba';
-import get3x3Scramble from './3x3.js';
+import kociemba, { phaseOne, phaseTwo } from './solver';
+import get3x3Scramble from './scrambler.js';
 
 
 export default {
