@@ -3,9 +3,21 @@ const express = require("express");
 const app = express();
 const os = require("os");
 
+/*
+* Returns the local ip of the computer
+*/
+function getLocalIP() {
+  var networkInterfaces = os.networkInterfaces();
+  var ethernet = networkInterfaces["Ethernet"];
+
+  for (var i = 0; i < ethernet.length; i++) {
+    if (ethernet[i]['family'] == 'IPv4')
+      return ethernet[i]['address'];
+  }
+}
+
 // Getting the local ip
-var networkInterfaces = os.networkInterfaces();
-var ip = networkInterfaces["Ethernet"][3]["address"];
+var ip = getLocalIP();
 
 // The port to listen
 const port = 3500;
@@ -20,6 +32,11 @@ const results = {};
 // Loading the code to pass to the client
 app.use(express.static("public"));
 app.use(express.json({limit: "1mb"}));
+
+/*app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+});*/
+
 
 // Gets the result
 app.post("/time", (request, response) => {

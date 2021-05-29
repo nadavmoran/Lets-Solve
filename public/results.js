@@ -31,4 +31,4 @@ function updateData(data) {
   resultsTable.innerHTML = data.name + ":" + data.results;
 }
 //Updates the results when getting a broadcast
-socket.on("broadcast", updateData(data));
+socket.on("broadcast", updateData);
