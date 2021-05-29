@@ -1,5 +1,5 @@
 const timer = document.getElementById("timer");
-const username = document.getElementById('username').value;
+const username = document.getElementById("username").value;
 
 var min = 0;
 var sec = 0;
