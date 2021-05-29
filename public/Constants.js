@@ -11,17 +11,17 @@ export const turnSpeed = Math.PI / (180 * 5);
 export function controls(key, cube) {
   // end the current animation
   if (cube.moving) cube.finishTurn();
-  console.log(key);
 
+  // change direction base on move type
   var direction = 1;
   if (key[1] == 2) {
     direction = 2;
     key = key[0];
   } else if (key == key.toLowerCase()) direction = -1;
 
+  // if the move is U, R, S, F reverse the direction
   if (["r", "u", "s", "f"].includes(key.toLowerCase())) direction *= -1;
 
-  console.log(direction);
   if (key == "r") {
     cube.turn("x", 1, direction);
   } else if (key == "R") {
