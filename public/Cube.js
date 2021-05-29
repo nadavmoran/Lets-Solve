@@ -65,7 +65,7 @@ export default class Cube {
             this.rotate(this.turnAngle * -1);
 
           // Finishes the turn if the angle is greater than 90 degrees
-          if (Math.abs(this.turnAngle) >= Math.PI / 2) {
+          if (Math.abs(this.turnAngle) >= Math.abs(this.turnDirection) * Math.PI / 2) {
             this.finishTurn();
           }
         }
