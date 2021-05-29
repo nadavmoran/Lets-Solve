@@ -1,5 +1,5 @@
 const timer = document.getElementById("timer");
-const username = document.getElementById("username").value;
+const username = document.getElementById("username");
 
 var min = 0;
 var sec = 0;
@@ -77,8 +77,7 @@ function resetTimer() {
  * Sends the time to the server
  */
 function sendData() {
-  var data = {name: username, result: time};
-
+  var data = {name: username.value, result: time};
   //The headers for sending the data
   const options = {
     method: "POST",

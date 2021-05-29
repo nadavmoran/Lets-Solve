@@ -4,15 +4,14 @@ const app = express();
 const os = require("os");
 
 /*
-* Returns the local ip of the computer
-*/
+ * Returns the local ip of the computer
+ */
 function getLocalIP() {
   var networkInterfaces = os.networkInterfaces();
   var ethernet = networkInterfaces["Ethernet"];
 
   for (var i = 0; i < ethernet.length; i++) {
-    if (ethernet[i]['family'] == 'IPv4')
-      return ethernet[i]['address'];
+    if (ethernet[i]["family"] == "IPv4") return ethernet[i]["address"];
   }
 }
 
@@ -20,7 +19,7 @@ function getLocalIP() {
 var ip = getLocalIP();
 
 // The port to listen
-const port = 3500;
+const port = 3400;
 // Listening to port 3500
 const server = app.listen(port, () =>
   console.log("listen at " + ip + " on port " + port)
@@ -33,17 +32,12 @@ const results = {};
 app.use(express.static("public"));
 app.use(express.json({limit: "1mb"}));
 
-/*app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-});*/
-
-
 // Gets the result
-app.post("/time", (request, response) => {
-  var data = request.body;
+app.post("/time", (req, res) => {
+  var data = req.body;
   var name = data.name;
   if (!results[name]) results[name] = [];
-  results.push(data.result);
+  results[name].push(data.result);
   // Broadcast the result to all connected clients
   io.sockets.emit("broadcast", results);
 });
