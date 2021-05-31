@@ -65,7 +65,7 @@ function timerCycle() {
  */
 function resetTimer() {
   stopTimer();
-  sendData();
+  submitTime();
   milli = 0;
   sec = 0;
   min = 0;
@@ -76,7 +76,7 @@ function resetTimer() {
 /**
  * Sends the time to the server
  */
-function sendData() {
+function submitTime() {
   var data = {name: username.value, result: time};
   //The headers for sending the data
   const options = {
