@@ -1,4 +1,9 @@
+// Enabling require
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
 // Loading the needed modules
+import getRandomScramble from "./cube-solver/scrambler.js";
 const express = require("express");
 const app = express();
 const os = require("os");
