@@ -1,6 +1,6 @@
 //import { username } from "./Constants";
 const timer = document.getElementById("timer");
-let username;
+const username = parent.document.URL.split("=")[1];
 
 var min = 0;
 var sec = 0;
@@ -8,18 +8,10 @@ var milli = 0;
 var time;
 var stoptime = true;
 
-
-function getUsername() {
-  var qs = new Querystring();
-  username = qs.get("username");
-  //var usernameElement = document.getElementById("username");
-  //username = usernameElement.value;
-}
 /**
  * Starts the time
  */
 function startTimer() {
-  getUsername();
   if (stoptime == true) {
     stoptime = false;
     timerCycle();
