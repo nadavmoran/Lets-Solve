@@ -2,6 +2,9 @@
 const timer = document.getElementById("timer");
 const username = parent.document.URL.split("=")[1];
 
+// Notify the server that a new user loged in
+sendData({name:username});
+
 var min = 0;
 var sec = 0;
 var milli = 0;
@@ -66,7 +69,7 @@ function timerCycle() {
  */
 function resetTimer() {
   stopTimer();
-  submitTime();
+  sendData({name: username, result: time});
   milli = 0;
   sec = 0;
   min = 0;
@@ -77,8 +80,7 @@ function resetTimer() {
 /**
  * Sends the time to the server
  */
-function submitTime() {
-  var data = {name: username, result: time};
+function sendData(data) {
   //The headers for sending the data
   const options = {
     method: "POST",
