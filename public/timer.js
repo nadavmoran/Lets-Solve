@@ -1,5 +1,6 @@
+//import { username } from "./Constants";
 const timer = document.getElementById("timer");
-const username = document.getElementById("username");
+let username;
 
 var min = 0;
 var sec = 0;
@@ -7,10 +8,18 @@ var milli = 0;
 var time;
 var stoptime = true;
 
+
+function getUsername() {
+  var qs = new Querystring();
+  username = qs.get("username");
+  //var usernameElement = document.getElementById("username");
+  //username = usernameElement.value;
+}
 /**
  * Starts the time
  */
 function startTimer() {
+  getUsername();
   if (stoptime == true) {
     stoptime = false;
     timerCycle();
@@ -77,7 +86,7 @@ function resetTimer() {
  * Sends the time to the server
  */
 function submitTime() {
-  var data = {name: username.value, result: time};
+  var data = {name: username, result: time};
   //The headers for sending the data
   const options = {
     method: "POST",
