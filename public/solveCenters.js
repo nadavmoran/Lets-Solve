@@ -1,4 +1,5 @@
-const centerOrder = ["U", "L", "F", "R", "B", "D"];
+import {centerOrder} from './Constants.js';
+
 const sliceMoves = {
   M: ["F", "D", "U", "B"],
   "M'": ["B", "U", "D", "F"],
@@ -24,7 +25,7 @@ const indexToMove = {0: "M2", 1: "S2", 2: "E2"};
   return moveOptions;
 }*/
 
-function getMoveFromState(state) {
+export default function GetMoveFromState(state) {
   var move = [...state];
 
   for (var i = 0; i < state.length; i++) {
@@ -57,5 +58,3 @@ function arraysEqual(a, b) {
   }
   return true;
 }
-
-console.log(getMoveFromState(["D", "R", "F", "L", "B", "U"]));
