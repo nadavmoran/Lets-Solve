@@ -1,5 +1,7 @@
 //The socket for sending the data
-var url = parent.document.URL.split('?')[0];
+var url = parent.document.URL.split('cube')[0];
+
+console.log(url);
 const socket = io.connect(url);
 const resultsTable = document.getElementById("results");
 const scramble = document.getElementById("scramble");
