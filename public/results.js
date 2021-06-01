@@ -1,5 +1,6 @@
 //The socket for sending the data
-const socket = io.connect("http://localhost:3400");
+var url = parent.document.URL.split('?')[0];
+const socket = io.connect(url);
 const resultsTable = document.getElementById("results");
 const scramble = document.getElementById("scramble");
 
