@@ -1,5 +1,5 @@
 // Enabling require
-import { createRequire } from "module";
+import {createRequire} from "module";
 const require = createRequire(import.meta.url);
 
 // Loading the needed modules
@@ -13,10 +13,12 @@ const os = require("os");
  */
 function getLocalIP() {
   var networkInterfaces = os.networkInterfaces();
-  var ethernet = networkInterfaces["Ethernet"];
-
-  for (var i = 0; i < ethernet.length; i++) {
-    if (ethernet[i]["family"] == "IPv4") return ethernet[i]["address"];
+  var keys = Object.keys(networkInterfaces);
+  for (var i = 0; i < keys.length; i++) {
+    var network = networkInterfaces[keys[i]];
+    for (var j = 0; j < network.length; j++) {
+      if (network[j]["family"] == "IPv4") return network[j]["address"];
+    }
   }
 }
 
@@ -30,9 +32,9 @@ function updateCompetitorsStatus() {
 function publishScramble() {
   var keys = Object.keys(competitorsStatus);
   for (var i = 0; i < keys.length; i++) {
-    if (competitorsStatus[keys[i]]) return
+    if (competitorsStatus[keys[i]]) return;
   }
-  io.sockets.emit('broadcast', {scramble: getRandomScramble()});
+  io.sockets.emit("broadcast", {scramble: getRandomScramble()});
   updateCompetitorsStatus();
 }
 
