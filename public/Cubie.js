@@ -12,19 +12,19 @@ export default class Cubie {
    * @param p p5.js instatnce
    * @param matrix {array} 3 dimentional matrix to represent the cubie
    * @param x {number} position of the cubie
-   * @param y {number} position of the cubie
-   * @param z {number} position of the cubie
+   * @param y {number} position of the cubie   * @param z {number} position of the cubie
    */
-  constructor(p, matrix, x, y, z) {
+  constructor(p, matrix, type, x, y, z) {
     this.p = p;
     this.matrix = matrix;
+    this.type = type;
     this.cords = {x: x, y: y, z: z};
     this.faces = [];
 
     // Add the faces base on the cubie position and type
     if (z == -1) {
       this.faces.push(
-        new Face(this.p, this.p.createVector(0, 0, -1), this.p.color(0, 0, 255))
+        new Face(this.p, this.p.createVector(0, 0, -1), this.p.color('blue'))
       );
     } else if (z == 1) {
       this.faces.push(
@@ -36,14 +36,14 @@ export default class Cubie {
         new Face(
           this.p,
           this.p.createVector(0, -1, 0),
-          this.p.color(255, 255, 255))
+          this.p.color('white'))
       );
     } else if (y == 1) {
       this.faces.push(
         new Face(
           this.p,
           this.p.createVector(0, 1, 0),
-          this.p.color(255, 255, 0))
+          this.p.color('yellow'))
       );
     }
     if (x == -1) {
@@ -51,11 +51,11 @@ export default class Cubie {
         new Face(
           this.p,
           this.p.createVector(-1, 0, 0),
-          this.p.color(255, 150, 0))
+          this.p.color('orange'))
       );
     } else if (x == 1) {
       this.faces.push(
-        new Face(this.p, this.p.createVector(1, 0, 0), this.p.color(255, 0, 0))
+        new Face(this.p, this.p.createVector(1, 0, 0), this.p.color('red'))
       );
     }
   }

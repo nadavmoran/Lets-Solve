@@ -1,7 +1,7 @@
 import * as mat4 from "./MathModules/mat4.js";
 import * as mat2d from "./MathModules/mat2d.js";
 import {updateCubeFace} from "./update_faces.js";
-import {dim, turnSpeed} from "./constants.js";
+import {dim, turnSpeed, pieceOrder} from "./constants.js";
 import Cubie from "./cubie.js";
 
 /**
@@ -29,6 +29,7 @@ export default class Cube {
     this.moving = false;
 
     // Builds the cucies array
+    var pieceIndex = 0;
     for (let x = -1; x < dim - 1; x++) {
       this.cube[x + 1] = [];
       for (let y = -1; y < dim - 1; y++) {
@@ -36,7 +37,9 @@ export default class Cube {
         for (let z = -1; z < dim - 1; z++) {
           var matrix = mat4.create();
           mat4.translate(matrix, matrix, [x, y, z]);
-          this.cube[x + 1][y + 1][z + 1] = new Cubie(p, matrix, x, y, z);
+          this.cube[x+1][y+1][z+1] = new Cubie(p, matrix,
+            pieceOrder[pieceIndex], x, y, z);
+          pieceIndex++;
         }
       }
     }

@@ -3,6 +3,33 @@ export const dim = 3;
 // The animation speed
 export const turnSpeed = Math.PI / (180 * 5);
 
+export const pieceOrder = [
+  "ULB",
+  "UL",
+  "UFL",
+  "BL",
+  "L",
+  "FL",
+  "DBL",
+  "UB",
+  "U",
+  "UF",
+  "B",
+  "C",
+  "F",
+  "DB",
+  "D",
+  "DF",
+  "UBR",
+  "UR",
+  "URF",
+  "BR",
+  "R",
+  "FR",
+  "DBR",
+  "DR",
+  "DFR"
+];
 /**
  * Turns the cube base on the key pressed
  * @param key {string} key the user pressed on
