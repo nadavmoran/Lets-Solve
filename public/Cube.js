@@ -29,7 +29,6 @@ export default class Cube {
     this.moving = false;
 
     // Builds the cucies array
-    var pieceIndex = 0;
     for (let x = -1; x < dim - 1; x++) {
       this.cube[x + 1] = [];
       for (let y = -1; y < dim - 1; y++) {
@@ -37,9 +36,11 @@ export default class Cube {
         for (let z = -1; z < dim - 1; z++) {
           var matrix = mat4.create();
           mat4.translate(matrix, matrix, [x, y, z]);
-          this.cube[x+1][y+1][z+1] = new Cubie(p, matrix,
-            pieceOrder[pieceIndex], x, y, z);
-          pieceIndex++;
+          var i = x + 1;
+          var j = y + 1;
+          var k = z + 1;
+          this.cube[i][j][k] = new Cubie(p, matrix,
+                                        pieceOrder[i][j][k], x, y, z);
         }
       }
     }
