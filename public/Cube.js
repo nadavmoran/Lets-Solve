@@ -20,6 +20,7 @@ export default class Cube {
   constructor(p) {
     this.cube = [];
     this.p = p;
+    this.lock = true;
 
     // Animation parameters
     this.turnAngle = 0;
