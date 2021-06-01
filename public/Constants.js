@@ -2,6 +2,8 @@
 export const dim = 3;
 // The animation speed
 export const turnSpeed = Math.PI / (180 * 5);
+// Centers solved order
+export const centerOrder = ["U", "L", "F", "R", "B", "D"];
 
 /*export const pieceOrder = [
   "ULB",
@@ -68,43 +70,27 @@ export function controls(key, cube) {
   // if the move is U, R, S, F reverse the direction
   if (["r", "u", "s", "f"].includes(key.toLowerCase())) direction *= -1;
 
-  if (key == "r") {
-    cube.turn("x", 1, direction);
-  } else if (key == "R") {
-    cube.turn("x", 1, direction);
-  } else if (key == "m") {
-    cube.turn("x", 0, direction);
-  } else if (key == "M") {
-    cube.turn("x", 0, direction);
-  } else if (key == "l") {
-    cube.turn("x", -1, direction);
-  } else if (key == "L") {
-    cube.turn("x", -1, direction);
-  } else if (key == "u") {
-    cube.turn("y", -1, direction);
-  } else if (key == "U") {
-    cube.turn("y", -1, direction);
-  } else if (key == "e") {
-    cube.turn("y", 0, direction);
-  } else if (key == "E") {
-    cube.turn("y", 0, direction);
-  } else if (key == "d") {
-    cube.turn("y", 1, direction);
-  } else if (key == "D") {
-    cube.turn("y", 1, direction);
-  } else if (key == "f") {
-    cube.turn("z", 1, direction);
-  } else if (key == "F") {
-    cube.turn("z", 1, direction);
-  } else if (key == "s") {
-    cube.turn("z", 0, direction);
-  } else if (key == "S") {
-    cube.turn("z", 0, direction);
-  } else if (key == "b") {
-    cube.turn("z", -1, direction);
-  } else if (key == "B") {
-    cube.turn("z", -1, direction);
+  var params;
+  if (key == "r" || key == "R") {
+    params = ["x", 1, direction];
+  } else if (key == "m" || key == "M") {
+    params = ["x", 0, direction];
+  } else if (key == "l" || key == "L") {
+    params = ["x", -1, direction];
+  } else if (key == "u" || key == "U") {
+    params = ["y", -1, direction];
+  } else if (key == "e" || key == "E") {
+    params = ["y", 0, direction];
+  } else if (key == "d" || key == "D") {
+    params = ["y", 1, direction];
+  } else if (key == "f" || key == "F") {
+    params = ["z", 1, direction];
+  } else if (key == "s" || key == "S") {
+    params = ["z", 0, direction];
+  } else if (key == "b" || key == "B") {
+    params = ["z", -1, direction];
   }
+  return params;
 }
 
 export function convertNotations(notation) {

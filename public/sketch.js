@@ -33,7 +33,10 @@ const s = p => {
    * @param p.key {string} key the key that the user pressed on
    */
   p.keyPressed = function() {
-    controls(p.key, cube);
+    if (!cube.lock) {
+      var params = controls(p.key, cube);
+      cube.turn(params[0], params[1], params[2]);
+    }
   };
 
   /**
@@ -44,13 +47,18 @@ const s = p => {
     p.background(51);
     p.scale(50);
     cube.show();
+
     if (scrambleElement.value != scramble) {
       scramble = scrambleElement.value;
       scrambleIndex = 0;
+      cube.lock = true;
     }
+
     if (!cube.moving && scrambleIndex < scramble.length) {
-      controls(convertNotations(scramble[scrambleIndex]), cube);
+      var params = controls(convertNotations(scramble[scrambleIndex]), cube);
+      cube.turn(params[0], params[1], params[2]);
       scrambleIndex++;
+      if (scrambleIndex == scramble.length) cube.lock = false;
     }
   };
 };
