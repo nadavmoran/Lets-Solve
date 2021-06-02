@@ -1,4 +1,5 @@
-import {Edges, Corners} from "./Constants.js";
+import {numOfEdges, Edges, numOfCorners, Corners, pieceOrder} from "./Constants.js";
+import {resetArray} from "./tools.js";
 
 export default class CubeOrientation {
   constructor() {
@@ -33,6 +34,25 @@ export default class CubeOrientation {
     move = move.toLowerCase();
     this.updateEdges(move, cube);
     this.updateCorners(move, cube);
+  }
+
+  getOrientation(cube) {
+    var edgesOrientation = resetArray(numOfEdges);
+    var cornersOrientation = resetArray(numOfCorners);
+
+    for (var i = 0; i < cube.length; i++) {
+      for (var j = 0; j < cube.length; j++) {
+        for (var k = 0; k < cube.length; k++) {
+          var pieceName = cube[i][j][k].name;
+          var solvedPiece = pieceOrder[i][j][k];
+          if (pieceName.length == 3)
+            cornersOrientation[Corners[solvedPiece]] = this.corners[pieceName];
+          else if (pieceName.length == 2)
+            edgesOrientation[Edges[solvedPiece]] = this.edges[pieceName];
+        }
+      }
+    }
+    return {edges: edgesOrientation, corners: cornersOrientation};
   }
 
   updateCorners(move, cube) {

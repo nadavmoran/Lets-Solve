@@ -8,6 +8,7 @@ async function solveCube() {
   solveCenters();
   await sleep(100);
   console.log(getPermutationFromCube(cube.cube));
+  console.log(cube.orientation.getOrientation(cube.cube));
 }
 
 document.getElementById('solver').onclick = solveCube;

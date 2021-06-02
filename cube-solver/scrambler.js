@@ -38,5 +38,9 @@ export default function getRandomScramble() {
     );
   } while (getParity(ep) !== getParity(cp));
 
+  console.log(eo);
+  console.log(ep);
+  console.log(co);
+  console.log(cp);
   return solveCoordinates(eo, ep, co, cp);
 };
