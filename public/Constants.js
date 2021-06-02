@@ -6,6 +6,8 @@ export const turnSpeed = Math.PI / (180 * 5);
 export const centerOrder = ["U", "L", "F", "R", "B", "D"];
 
 export const scrambleElement = document.getElementById("scramble");
+export const cubeElement = document.getElementById("cube");
+
 /*export const pieceOrder = [
   "ULB",
   "UL",

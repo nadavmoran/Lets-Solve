@@ -1,7 +1,7 @@
 import * as mat4 from "./MathModules/mat4.js";
 import * as mat2d from "./MathModules/mat2d.js";
 import {updateCubeFace} from "./update_faces.js";
-import {dim, turnSpeed, pieceOrder} from "./constants.js";
+import {dim, turnSpeed, pieceOrder, cubeElement} from "./constants.js";
 import Cubie from "./cubie.js";
 
 /**
@@ -113,6 +113,7 @@ export default class Cube {
     if (this.turnAxis == "x") this.updateX();
     else if (this.turnAxis == "y") this.updateY();
     else if (this.turnAxis == "z") this.updateZ();
+    cubeElement.value = this.cube;
   }
 
   /**

@@ -1,4 +1,4 @@
-import {pieceOrder} from "./Constants.js";
+import {pieceOrder, cubeElement} from "./Constants.js";
 
 export function getCenterPermutation(cube) {
   var permutation = [cube[1][0][1].type,
