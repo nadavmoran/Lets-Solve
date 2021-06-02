@@ -25,6 +25,7 @@ const s = p => {
 
     scrambleIndex = 0;
     var scram = "U F2 R2 U B2 L2 U' B2 U' L2 F2 L' U F' D' U R B' L2 D U2";
+    scram = '';
     scrambleElement.innerHTML = scram;//data.scramble;
     scrambleElement.value = scram.split(' ');//data.scramble;
     scramble = scrambleElement.value;
@@ -37,7 +38,7 @@ const s = p => {
   p.keyPressed = function() {
     if (!cube.lock) {
       var params = controls(p.key, cube);
-      if (params) cube.turn(params[0], params[1], params[2]);
+      if (params) cube.turn(params[0], params[1], params[2], p.key);
     }
   };
 
@@ -57,8 +58,9 @@ const s = p => {
     }
 
     if (!cube.moving && scrambleIndex < scramble.length) {
-      var params = controls(convertNotations(scramble[scrambleIndex]), cube);
-      if (params) cube.turn(params[0], params[1], params[2]);
+      var move = convertNotations(scramble[scrambleIndex]);
+      var params = controls(move, cube);
+      if (params) cube.turn(params[0], params[1], params[2], move);
       scrambleIndex++;
       if (scrambleIndex == scramble.length) cube.lock = false;
     }

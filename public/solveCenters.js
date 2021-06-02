@@ -27,9 +27,9 @@ export default function solveCenters() {
 }
 
 function fixCenters(cube, centersPermutation) {
-  var move = getMoveFromState(centersPermutation);
-  var params = controls(convertNotations(move), cube.cube);
-  if (params) cube.turn(params[0], params[1], params[2]);
+  var move = convertNotations(getMoveFromState(centersPermutation));
+  var params = controls(move, cube.cube);
+  if (params) cube.turn(params[0], params[1], params[2], move);
   return getCenterPermutation(cube.cube);
 }
 

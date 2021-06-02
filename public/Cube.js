@@ -3,6 +3,7 @@ import * as mat2d from "./MathModules/mat2d.js";
 import {updateCubeFace} from "./update_faces.js";
 import {dim, turnSpeed, pieceOrder, cubeElement} from "./constants.js";
 import Cubie from "./cubie.js";
+import CubeOrientation from "./CubeOrientation.js";
 
 /**
  * The actual Rubik's Cube
@@ -21,6 +22,7 @@ export default class Cube {
     this.cube = [];
     this.p = p;
     this.lock = true;
+    this.orientation = new CubeOrientation();
 
     // Animation parameters
     this.turnAngle = 0;
@@ -80,11 +82,13 @@ export default class Cube {
    * Starts the turn animation
    * @param axis the axis to turn the cube
    */
-  turn(axis, index, direction) {
+  turn(axis, index, direction, move) {
     this.moving = true;
     this.turnIndex = index;
     this.turnAxis = axis;
     this.turnDirection = direction;
+    this.orientation.update(move, this.cube);
+    console.log(this.orientation.edges);
   }
 
   /**
