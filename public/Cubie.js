@@ -17,7 +17,7 @@ export default class Cubie {
   constructor(p, matrix, type, x, y, z) {
     this.p = p;
     this.matrix = matrix;
-    this.type = type;
+    this.name = name;
     this.cords = {x: x, y: y, z: z};
     this.faces = [];
 
