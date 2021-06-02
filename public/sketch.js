@@ -1,5 +1,6 @@
 import Cube from "./cube.js";
-import {controls, convertNotations, scrambleElement, cubeElement} from "./constants.js";
+import {controls, scrambleElement, cubeElement} from "./constants.js";
+import {convertNotations} from "./tools.js";
 
 
 const s = p => {
@@ -21,7 +22,7 @@ const s = p => {
     });
     cube = new Cube(p);
     cubeElement.value = cube;
-    
+
     scrambleIndex = 0;
     var scram = "U F2 R2 U B2 L2 U' B2 U' L2 F2 L' U F' D' U R B' L2 D U2";
     scrambleElement.innerHTML = scram;//data.scramble;

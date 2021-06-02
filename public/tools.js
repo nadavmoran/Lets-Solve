@@ -32,3 +32,9 @@ export function arraysEqual(a, b) {
   }
   return true;
 }
+
+export function convertNotations(notation) {
+  if (notation[1] == 2) return notation;
+  else if (notation[1]) return notation[0];
+  return notation.toLowerCase();
+}
