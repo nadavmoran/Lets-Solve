@@ -1,10 +1,10 @@
+import {scrambleElement} from './Constants.js';
+
 //The socket for sending the data
 var url = parent.document.URL.split('cube')[0];
 
-console.log(url);
 const socket = io.connect(url);
 const resultsTable = document.getElementById("results");
-const scramble = document.getElementById("scramble");
 
 /**
  * Make a string from array elemnts
@@ -24,8 +24,8 @@ function getTextFromList(arr) {
 function updateData(data) {
   console.log(data);
   if (data.scramble) {
-    scramble.innerHTML = data.scramble;
-    scramble.value = data.scramble;
+    scrambleElement.innerHTML = data.scramble;
+    scrambleElement.value = data.scramble;
   }
 
   let text = "";

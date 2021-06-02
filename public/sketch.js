@@ -1,9 +1,8 @@
 import Cube from "./cube.js";
-import {controls, convertNotations} from "./constants.js";
+import {controls, convertNotations, scrambleElement} from "./constants.js";
 
 
 const s = p => {
-  const scrambleElement = document.getElementById("scramble");
   let scrambleIndex;
   let scramble;
   let cam;
@@ -35,7 +34,7 @@ const s = p => {
   p.keyPressed = function() {
     if (!cube.lock) {
       var params = controls(p.key, cube);
-      cube.turn(params[0], params[1], params[2]);
+      if (params) cube.turn(params[0], params[1], params[2]);
     }
   };
 
@@ -56,7 +55,7 @@ const s = p => {
 
     if (!cube.moving && scrambleIndex < scramble.length) {
       var params = controls(convertNotations(scramble[scrambleIndex]), cube);
-      cube.turn(params[0], params[1], params[2]);
+      if (params) cube.turn(params[0], params[1], params[2]);
       scrambleIndex++;
       if (scrambleIndex == scramble.length) cube.lock = false;
     }
