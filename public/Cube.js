@@ -88,7 +88,6 @@ export default class Cube {
     this.turnAxis = axis;
     this.turnDirection = direction;
     this.orientation.update(move, this.cube);
-    console.log(this.orientation.edges);
   }
 
   /**
