@@ -1,4 +1,5 @@
-import {centerOrder} from './Constants.js';
+import {centerOrder} from "./Constants.js";
+import {getKeyByValue} from "./tools.js";
 
 const sliceMoves = {
   M: ["F", "D", "U", "B"],
@@ -25,7 +26,7 @@ const indexToMove = {0: "M2", 1: "S2", 2: "E2"};
   return moveOptions;
 }*/
 
-export default function GetMoveFromState(state) {
+export default function solveCenters(state) {
   var move = [...state];
 
   for (var i = 0; i < state.length; i++) {
