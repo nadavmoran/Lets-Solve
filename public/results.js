@@ -14,7 +14,7 @@ function updateData(data) {
   console.log(data);
   if (data.scramble) {
     scrambleElement.innerHTML = data.scramble;
-    scrambleElement.value = data.scramble;
+    scrambleElement.value = data.scramble.split(' ');
   }
 
   let text = "";
