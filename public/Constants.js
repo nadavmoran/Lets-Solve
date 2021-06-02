@@ -1,7 +1,7 @@
 // The number of pieces for each dimention
 export const dim = 3;
 // The animation speed
-export const turnSpeed = Math.PI / (180 * 5);
+export const turnSpeed = Math.PI / (180);
 // Centers solved order
 export const centerOrder = ["U", "L", "F", "R", "B", "D"];
 
@@ -104,10 +104,4 @@ export function controls(key, cube) {
     params = ["z", -1, direction];
   }
   return params;
-}
-
-export function convertNotations(notation) {
-  if (notation[1] == 2) return notation;
-  else if (notation[1]) return notation[0];
-  return notation.toLowerCase();
 }

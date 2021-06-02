@@ -1,5 +1,7 @@
-import {centerOrder} from "./Constants.js";
-import {getKeyByValue} from "./tools.js";
+import {centerOrder, cubeElement, controls} from "./Constants.js";
+import {getKeyByValue, arraysEqual, convertNotations} from "./tools.js";
+import {getCenterPermutation} from "./cubeConvertor.js";
+
 
 const sliceMoves = {
   M: ["F", "D", "U", "B"],
@@ -14,19 +16,24 @@ const sliceMoves = {
 };
 const indexToMove = {0: "M2", 1: "S2", 2: "E2"};
 
-/* function chooseMove(state) {
-  var moveOptions = ['M','S','E'];
+export default function solveCenters() {
+  var cube = cubeElement.value;
+  var centersPermutation = getCenterPermutation(cube.cube);
 
-  for (var i = 0; i < state.length; i++) {
-    for (var j = 0; j < moveOptions.length; j++) {
-      if (!sliceMoves[moveOptions[j]].includes(state[i]))
-        moveOptions.splice(j, 1);
-    }
+  if (!arraysEqual(centersPermutation, centerOrder)) {
+    centersPermutation = fixCenters(cube, centersPermutation);
+    setTimeout(solveCenters, 100);
   }
-  return moveOptions;
-}*/
+}
 
-export default function solveCenters(state) {
+function fixCenters(cube, centersPermutation) {
+  var move = getMoveFromState(centersPermutation);
+  var params = controls(convertNotations(move), cube.cube);
+  if (params) cube.turn(params[0], params[1], params[2]);
+  return getCenterPermutation(cube.cube);
+}
+
+function getMoveFromState(state) {
   var move = [...state];
 
   for (var i = 0; i < state.length; i++) {
@@ -44,3 +51,15 @@ export default function solveCenters(state) {
 
   return "M";
 }
+
+/* function chooseMove(state) {
+  var moveOptions = ['M','S','E'];
+
+  for (var i = 0; i < state.length; i++) {
+    for (var j = 0; j < moveOptions.length; j++) {
+      if (!sliceMoves[moveOptions[j]].includes(state[i]))
+        moveOptions.splice(j, 1);
+    }
+  }
+  return moveOptions;
+}*/
