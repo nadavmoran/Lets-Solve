@@ -38,3 +38,7 @@ export function convertNotations(notation) {
   else if (notation[1]) return notation[0];
   return notation.toLowerCase();
 }
+
+export function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+}
