@@ -30,12 +30,36 @@ export default class CubeOrientation {
   }
 
   update(move, cube) {
-    updateEdges(move, cube);
+    move = move.toLowerCase();
+    this.updateEdges(move, cube);
+    this.updateCorners(move, cube);
+  }
 
+  updateCorners(move, cube) {
+    if (move == 'r') {
+      this.twistCorner(cube[2][0][0].name, 1);
+      this.twistCorner(cube[2][0][2].name, 2);
+      this.twistCorner(cube[2][2][0].name, 2);
+      this.twistCorner(cube[2][2][2].name, 1);
+    } else if (move == 'l') {
+      this.twistCorner(cube[0][0][0].name, 2);
+      this.twistCorner(cube[0][0][2].name, 1);
+      this.twistCorner(cube[0][2][0].name, 1);
+      this.twistCorner(cube[0][2][2].name, 2);
+    } else if (move == 'f') {
+      this.twistCorner(cube[2][0][2].name, 1);
+      this.twistCorner(cube[0][0][2].name, 2);
+      this.twistCorner(cube[2][2][2].name, 2);
+      this.twistCorner(cube[0][2][2].name, 1);
+    } else if (move == 'b') {
+      this.twistCorner(cube[2][0][0].name, 2);
+      this.twistCorner(cube[0][0][0].name, 1);
+      this.twistCorner(cube[2][2][0].name, 1);
+      this.twistCorner(cube[0][2][0].name, 2);
+    }
   }
 
   updateEdges(move, cube) {
-    move = move.toLowerCase();
     var index = {f: 2, s: 1, b: 0}[move];
 
     if (["f", "b", "s"].includes(move)) {
@@ -63,5 +87,10 @@ export default class CubeOrientation {
   flipEdge(name) {
     this.edges[name] += 1;
     if (this.edges[name] == 2) this.edges[name] = 0;
+  }
+
+  twistCorner(name, degree) {
+    this.corners[name] += degree;
+    if (this.corners[name] > 2) this.corners[name] -= 3;
   }
 }
