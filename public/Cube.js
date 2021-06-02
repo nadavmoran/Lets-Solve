@@ -113,7 +113,6 @@ export default class Cube {
     if (this.turnAxis == "x") this.updateX();
     else if (this.turnAxis == "y") this.updateY();
     else if (this.turnAxis == "z") this.updateZ();
-    cubeElement.value = this.cube;
   }
 
   /**
