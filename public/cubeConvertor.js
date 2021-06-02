@@ -46,11 +46,8 @@ export function getPermutationFromCube(cube) {
     for (var j = 0; j < cube.length; j++) {
       for (var k = 0; k < cube.length; k++) {
         var pieceName = cube[i][j][k].name;
-        if (pieceName.length == 3) {
-          console.log(pieceName, Corners[pieceName]);
-          console.log(pieceOrder[i][j][k], Corners[pieceOrder[i][j][k]]);
+        if (pieceName.length == 3)
           cornersPermutation[Corners[pieceOrder[i][j][k]]] = Corners[pieceName];
-        }
         else if (pieceName.length == 2)
           edgesPermutation[Edges[pieceOrder[i][j][k]]] = Edges[pieceName];
         //else if (pieceName.length == 1) centersPermutation[Centers[pieceOredr[i][j][k].name] = Centers[pieceName];
