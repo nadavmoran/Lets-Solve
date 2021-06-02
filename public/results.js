@@ -1,22 +1,11 @@
 import {scrambleElement} from './Constants.js';
+import {getTextFromList} from './tools.js';
 
 //The socket for sending the data
 var url = parent.document.URL.split('cube')[0];
 
 const socket = io.connect(url);
 const resultsTable = document.getElementById("results");
-
-/**
- * Make a string from array elemnts
- * @param arr array to make a string from
- */
-function getTextFromList(arr) {
-  var text = "";
-  for (var i = 0; i < arr.length; i++) {
-    text += arr[i] + ", ";
-  }
-  return text;
-}
 
 /**
  * Gets data from the server and updates the results and the scramble
