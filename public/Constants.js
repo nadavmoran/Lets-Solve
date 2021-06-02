@@ -24,7 +24,7 @@ export const Edges = {
   FR: 8,
   FL: 9,
   BL: 10,
-  BR: 11,
+  BR: 11
 };
 
 export const Corners = {
@@ -35,7 +35,16 @@ export const Corners = {
   DFR: 4,
   DLF: 5,
   DBL: 6,
-  DBR: 7,
+  DBR: 7
+};
+
+export const Centers = {
+  U: 0,
+  L: 1,
+  F: 2,
+  R: 3,
+  B: 4,
+  D: 5
 };
 
 export const pieceOrder = [
