@@ -14,7 +14,7 @@ export default class Cubie {
    * @param x {number} position of the cubie
    * @param y {number} position of the cubie   * @param z {number} position of the cubie
    */
-  constructor(p, matrix, type, x, y, z) {
+  constructor(p, matrix, name, x, y, z) {
     this.p = p;
     this.matrix = matrix;
     this.name = name;
