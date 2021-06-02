@@ -87,7 +87,7 @@ export default class Cube {
     this.turnIndex = index;
     this.turnAxis = axis;
     this.turnDirection = direction;
-    this.orientation.update(move, this.cube);
+    this.move = move;
   }
 
   /**
@@ -97,6 +97,7 @@ export default class Cube {
     this.moving = false;
     this.turnAngle = 0;
     this.update();
+    this.orientation.update(this.move, this.cube);
   }
 
   /**
