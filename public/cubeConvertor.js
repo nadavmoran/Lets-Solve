@@ -10,20 +10,19 @@ import {
   Corners
 } from "./Constants.js";
 import {resetArray, arraysEqual} from "./tools.js";
-import SolveCenters from './solveCenters.js';
-
+import SolveCenters from "./solveCenters.js";
 
 export function getCubeState(cube) {
-    var state = [];
-    for (var i = 0; i < cube.length; i++) {
-      state[i] = [];
-      for (var j = 0; j < cube.length; j++) {
-        state[i][j] = [];
-        for (var k = 0; k < cube.length; k++) {
-          state[i][j][k] = cube[i][j][k].name;
-        }
+  var state = [];
+  for (var i = 0; i < cube.length; i++) {
+    state[i] = [];
+    for (var j = 0; j < cube.length; j++) {
+      state[i][j] = [];
+      for (var k = 0; k < cube.length; k++) {
+        state[i][j][k] = cube[i][j][k].name;
       }
     }
+  }
 }
 
 export function getCenterPermutation(cube) {
@@ -38,7 +37,7 @@ export function getCenterPermutation(cube) {
   return permutation;
 }
 
-function getPermutationFromCube(cube) {
+export function getPermutationFromCube(cube) {
   var edgesPermutation = resetArray(numOfEdges);
   var cornersPermutation = resetArray(numOfCorners);
   //var centersPermutation = resetArray(numOfCenters);
@@ -47,8 +46,13 @@ function getPermutationFromCube(cube) {
     for (var j = 0; j < cube.length; j++) {
       for (var k = 0; k < cube.length; k++) {
         var pieceName = cube[i][j][k].name;
-        if (pieceName.length == 3) cornersPermutation[Corners[pieceOredr[i][j][k].name]] = Corners[pieceName];
-        else if (pieceName.length == 2) edgesPermutation[Edges[pieceOredr[i][j][k].name]] = Edges[pieceName];
+        if (pieceName.length == 3) {
+          console.log(pieceName, Corners[pieceName]);
+          console.log(pieceOrder[i][j][k], Corners[pieceOrder[i][j][k]]);
+          cornersPermutation[Corners[pieceOrder[i][j][k]]] = Corners[pieceName];
+        }
+        else if (pieceName.length == 2)
+          edgesPermutation[Edges[pieceOrder[i][j][k]]] = Edges[pieceName];
         //else if (pieceName.length == 1) centersPermutation[Centers[pieceOredr[i][j][k].name] = Centers[pieceName];
       }
     }
