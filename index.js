@@ -4,6 +4,8 @@ const require = createRequire(import.meta.url);
 
 // Loading the needed modules
 import getRandomScramble from "./cube-solver/scrambler.js";
+import {solveCoordinates} from "./solver.js";
+
 const express = require("express");
 const app = express();
 const os = require("os");
@@ -42,7 +44,7 @@ function publishScramble() {
 var ip = getLocalIP();
 
 // The port to listen
-const port = 3400;
+const port = 3500;
 // Listening to port 3500
 const server = app.listen(port, () =>
   console.log("listen at " + ip + " on port " + port)
@@ -69,4 +71,10 @@ app.post("/time", (req, res) => {
   publishScramble();
   // Broadcast the result to all connected clients
   io.sockets.emit("broadcast", results);
+  res.end();
+});
+
+app.post("/solution", (req, res) => {
+  var data = req.body;
+  res.json(data);
 });
