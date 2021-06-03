@@ -7,7 +7,7 @@ async function solveCube() {
   var cube = cubeElement.value;
   cube.lock = true;
   solveCenters();
-  await sleep(100);
+  await sleep(1000);
   var permutation = getPermutationFromCube(cube.cube);
   var orientation = cube.orientation.getOrientation(cube.cube);
   var state = {
