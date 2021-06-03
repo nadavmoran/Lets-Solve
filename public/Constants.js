@@ -1,7 +1,7 @@
 // The number of pieces for each dimention
 export const dim = 3;
 // The animation speed
-export const turnSpeed = Math.PI / (180);
+export const turnSpeed = Math.PI / (180 * 5);
 // Centers solved order
 export const centerOrder = ["U", "L", "F", "R", "B", "D"];
 

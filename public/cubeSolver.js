@@ -29,7 +29,7 @@ async function sendState(state) {
   };
   var response = await fetch("/solution", options);
   var solution = await response.json();
-  scrambleElement.value = solution.solution.split(' ');
-  scrambleElement.innerHTML = solution.solution;
+  scrambleElement.value = solution.solution.split(" ");
+  scrambleElement.innerHTML = "sotlution: " + solution.solution;
 }
 document.getElementById("solver").onclick = solveCube;

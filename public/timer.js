@@ -68,6 +68,7 @@ function timerCycle() {
  * Resets the timer
  */
 function resetTimer() {
+  if (time == "0.00") return;
   stopTimer();
   sendData({name: username, result: time});
   milli = 0;
