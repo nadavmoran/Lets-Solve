@@ -20,12 +20,12 @@ function updateData(data) {
     text += '<th>solve ' + i + '</th>';
   }
   text += '</tr>';
-
   for (var i = 0; i < keys.length; i++) {
-    text += '<tr><td>' + keys[i] + "</td>" //+ getTextFromList(data[keys[i]]) + "</td>";
+    text += '<tr><td>' + keys[i] + "</td>";
     var results = data[keys[i]];
-    for (var j = results.length-1; j >= 0; j--) {
-      text += '<td>' + results[j] + '</td>';
+    for (var j = length-1; j >= 0; j--) {
+      if (results[j]) text += '<td>' + results[j] + '</td>';
+      else text += '<td></td>';
     }
   }
   text += '</tr></table>'
