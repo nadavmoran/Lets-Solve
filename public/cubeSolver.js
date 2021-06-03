@@ -1,10 +1,11 @@
 import solveCenters from "./solveCenters.js";
-import {cubeElement, socket} from "./Constants.js";
+import {cubeElement, scrambleElement, socket} from "./Constants.js";
 import {getPermutationFromCube} from "./cubeConvertor.js";
 import {sleep} from "./tools.js";
 
 async function solveCube() {
   var cube = cubeElement.value;
+  cube.lock = true;
   solveCenters();
   await sleep(100);
   var permutation = getPermutationFromCube(cube.cube);
@@ -28,6 +29,7 @@ async function sendState(state) {
   };
   var response = await fetch("/solution", options);
   var solution = await response.json();
-  console.log(solution);
+  scrambleElement.value = solution.solution.split(' ');
+  scrambleElement.innerHTML = solution.solution;
 }
 document.getElementById("solver").onclick = solveCube;

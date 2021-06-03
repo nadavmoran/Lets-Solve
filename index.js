@@ -4,7 +4,7 @@ const require = createRequire(import.meta.url);
 
 // Loading the needed modules
 import getRandomScramble from "./cube-solver/scrambler.js";
-import {solveCoordinates} from "./solver.js";
+import {solveCoordinates} from "./cube-solver/solver.js";
 
 const express = require("express");
 const app = express();
@@ -76,5 +76,7 @@ app.post("/time", (req, res) => {
 
 app.post("/solution", (req, res) => {
   var data = req.body;
-  res.json(data);
+  var solution = solveCoordinates(data.eo, data.ep, data.co, data.cp);
+  console.log(solution);
+  res.json({solution: solution});
 });
