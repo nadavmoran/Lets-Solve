@@ -25,7 +25,6 @@ function updateData(data) {
     text += '<tr><td>' + keys[i] + "</td>" //+ getTextFromList(data[keys[i]]) + "</td>";
     var results = data[keys[i]];
     for (var j = results.length-1; j >= 0; j--) {
-      console.log(results[j]);
       text += '<td>' + results[j] + '</td>';
     }
   }
