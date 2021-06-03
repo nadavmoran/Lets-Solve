@@ -8,6 +8,9 @@ export const centerOrder = ["U", "L", "F", "R", "B", "D"];
 export const scrambleElement = document.getElementById("scramble");
 export const cubeElement = document.getElementById("cube");
 
+const url = parent.document.URL.split('cube')[0];
+export const socket = io.connect(url);
+
 export const numOfEdges = 12;
 export const numOfCorners = 8;
 export const numOfCenters = 6;

@@ -1,10 +1,6 @@
-import {scrambleElement} from './Constants.js';
+import {scrambleElement, socket} from './Constants.js';
 import {getTextFromList} from './tools.js';
 
-//The socket for sending the data
-var url = parent.document.URL.split('cube')[0];
-
-const socket = io.connect(url);
 const resultsTable = document.getElementById("results");
 
 /**
