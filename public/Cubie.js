@@ -24,7 +24,11 @@ export default class Cubie {
     // Add the faces base on the cubie position and type
     if (z == -1) {
       this.faces.push(
-        new Face(this.p, this.p.createVector(0, 0, -1), this.p.color('blue'))
+        new Face(
+          this.p,
+          this.p.createVector(0, 0, -1),
+          this.p.color(28, 28, 240)
+        )
       );
     } else if (z == 1) {
       this.faces.push(
@@ -33,29 +37,20 @@ export default class Cubie {
     }
     if (y == -1) {
       this.faces.push(
-        new Face(
-          this.p,
-          this.p.createVector(0, -1, 0),
-          this.p.color('white'))
+        new Face(this.p, this.p.createVector(0, -1, 0), this.p.color("white"))
       );
     } else if (y == 1) {
       this.faces.push(
-        new Face(
-          this.p,
-          this.p.createVector(0, 1, 0),
-          this.p.color('yellow'))
+        new Face(this.p, this.p.createVector(0, 1, 0), this.p.color("yellow"))
       );
     }
     if (x == -1) {
       this.faces.push(
-        new Face(
-          this.p,
-          this.p.createVector(-1, 0, 0),
-          this.p.color('orange'))
+        new Face(this.p, this.p.createVector(-1, 0, 0), this.p.color("orange"))
       );
     } else if (x == 1) {
       this.faces.push(
-        new Face(this.p, this.p.createVector(1, 0, 0), this.p.color('red'))
+        new Face(this.p, this.p.createVector(1, 0, 0), this.p.color("red"))
       );
     }
   }
