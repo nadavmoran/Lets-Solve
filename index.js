@@ -31,11 +31,16 @@ function updateCompetitorsStatus() {
   }
 }
 
-function publishScramble() {
+function isFinished() {
   var keys = Object.keys(competitorsStatus);
   for (var i = 0; i < keys.length; i++) {
-    if (competitorsStatus[keys[i]]) return;
+    if (competitorsStatus[keys[i]]) return false;
   }
+  return true;
+}
+
+function publishScramble() {
+  if (!isFinished()) return;
   io.sockets.emit("broadcast", {scramble: getRandomScramble()});
   updateCompetitorsStatus();
 }
@@ -72,6 +77,7 @@ app.post("/time", (req, res) => {
     competitorsStatus[name] = false;
   }
   publishScramble();
+
   // Broadcast the result to all connected clients
   io.sockets.emit("broadcast", results);
   res.end();
