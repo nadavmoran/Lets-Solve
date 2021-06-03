@@ -5,25 +5,34 @@
   <meta charset="UTF-8" />
   <link rel="shortcut icon" href="#">
   <title>Lets Solve</title>
+  <link rel="stylesheet" type="text/css" href="stylesheet.css" media="screen"/>
+  <div class="header">
+    <h1>Lets Solve</h1>
+  </div>
 </head>
 
 <body>
   <!-- Get the username of the client -->
-  <p>Enter your username:</p>
-  <form>
-    <input type="text" name="username" id="username" placeholder="Type Here">
-  </form>
+  <div id="form">
+    <label>Enter your name and press enter</label></br>
+    <input type="text" name="username" id="username">
+  </div>
 
   <!-- Create a link to the competition that passes the username -->
   <script>
-    var a = document.createElement('a');
+    /*var a = document.createElement('a');
     var link = document.createTextNode("Enter the competition");
     a.appendChild(link);
-    a.title = "Enter the compeptition";
-
-    var username = parent.document.URL.split('=')[1];
-    a.href = "cube.html?username=" + username;
-    document.body.appendChild(a);
+    a.title = "Enter the compeptition";*/
+    document.getElementById('username')
+        .addEventListener('keyup', function(event) {
+            if (event.code === 'Enter') {
+                event.preventDefault();
+                var username = document.getElementById('username').value;// parent.document.URL.split('=')[1];
+                var url = "cube.html?username=" + username;
+                window.location.href = url;
+            }
+        });
   </script>
 </body>
 
