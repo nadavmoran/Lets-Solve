@@ -19,10 +19,11 @@ function updateData(data) {
 
   let text = "";
   let keys = Object.keys(data);
-
-  for (var i = 0; i < keys.length; i++) {
-    text += keys[i] + ":" + getTextFromList(data[keys[i]]);
+  text = '<table style="width:50%"> <tr>    <th>Firstname</th><th>Time 1</th> </tr>'
+    for (var i = 0; i < keys.length; i++) {
+    text += '<tr><td>' + keys[i] + "</td><td>" + getTextFromList(data[keys[i]]) + "</td>";
   }
+  text += '</tr></table>'
   resultsTable.innerHTML = text;
 }
 //Updates the results when getting a broadcast

@@ -14,7 +14,7 @@ const s = p => {
    */
   p.setup = function() {
     // Disable the context menu on the canvas so the camera can use the right mouse button
-    p.createCanvas(600, 600, p.WEBGL).elt.oncontextmenu = () => false;
+    p.createCanvas(500, 500, p.WEBGL).elt.oncontextmenu = () => false;
 
     // The camera to view the cube with
     cam = p.createEasyCam({
@@ -25,7 +25,6 @@ const s = p => {
 
     scrambleIndex = 0;
     var scram = "U F2 R2 U B2 L2 U' B2 U' L2 F2 L' U F' D' U R B' L2 D U2";
-    scram = '';
     scrambleElement.innerHTML = scram;//data.scramble;
     scrambleElement.value = scram.split(' ');//data.scramble;
     scramble = scrambleElement.value;

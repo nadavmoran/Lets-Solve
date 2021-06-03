@@ -10,38 +10,195 @@
   <script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/freshfork/p5.EasyCam@1.0.10/p5.easycam.min.js"></script>
   <script src="https://cdn.socket.io/4.1.1/socket.io.js"></script>
+  <style>
+    .button {
+      background-color: #4CAF50;
+      /* Green */
+      border: none;
+      color: white;
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+
+    .button1 {
+      background-color: white;
+      color: black;
+      border: 3px solid #4CAF50;
+    }
+
+    .button1:hover {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .button2 {
+      background-color: white;
+      color: black;
+      border: 3px solid #008CBA;
+    }
+
+    .button2:hover {
+      background-color: #008CBA;
+      color: white;
+    }
+
+    .button3 {
+      background-color: white;
+      color: black;
+      border: 3px solid #f44336;
+    }
+
+    .button3:hover {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .button4 {
+      background-color: white;
+      color: black;
+      border: 3px solid #e7e7e7;
+    }
+
+    .button4:hover {
+      background-color: #e7e7e7;
+    }
+
+    .button5 {
+      background-color: white;
+      color: black;
+      border: 3px solid #555555;
+    }
+
+    .button5:hover {
+      background-color: #555555;
+      color: white;
+    }
+
+    .timer {
+      position: absolute;
+      margin-left: 40%;
+      margin-right: 40%;
+      top: 17%;
+      width: 100px;
+      border: 3px solid #73AD21;
+      padding: 10px;
+      font-size: 28px;
+      text-align: center;
+
+    }
+
+    .center {
+      margin: 5;
+      position: absolute;
+      margin-left: 45%;
+      top: 33%;
+      padding: 10px;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .scramble {
+      margin: 5;
+      position: absolute;
+      left: 34%;
+      top: 50%;
+      font-size: 1.0714285714285714rem;
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      font-weight: 500;
+      line-height: 1.6;
+      letter-spacing: 0.0075em;
+      border: 4px solid #a1a1a1;
+      padding: 10px;
+    }
+
+    .results {
+      margin: 5;
+      position: absolute;
+      left: 34%;
+      top: 45%;
+      font-size: 1.0714285714285714rem;
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      font-weight: 500;
+      line-height: 1.6;
+      letter-spacing: 0.0075em;
+
+    }
+
+    .solver {
+      top: 43%;
+    }
+
+    .top {
+      position: absolute;
+
+      top: 50%;
+    }
+
+    table,
+    th,
+    td {
+      border: 2px solid #a1a1a1;
+      border-collapse: collapse;
+
+    }
+
+    .header {
+      padding: 5px;
+      text-align: center;
+      background: #1abc9c;
+      color: white;
+      font-size: 18px;
+    }
+  </style>
+  <div class="header">
+    <h1>Lets Paly</h1>
+  </div>
 </head>
 
 <body>
-
-  <!-- The cube script -->
-  <div id="cube"></div>
-  <script type="module" src="sketch.js"></script>
-
   <!-- The timer display -->
-  <div id="timer">
-    0.00
-  </div>
+  <div id="timer" class="timer">0.00</div>
+
 
   <!-- The buttons for the timer -->
-  <ul id="buttons">
-    <li><button onclick="startTimer()">Start</button></li>
-    <li><button onclick="stopTimer()">Stop</button></li>
-    <li><button onclick="resetTimer()">Reset</button></li>
-  </ul>
+  <div class="center">
+    <div id="buttons">
+      <button class="button button1" onclick="startTimer()">Start</button>
+      <button class="button button3" onclick="stopTimer()">Stop</button>
+      <button class="button button2" onclick="resetTimer()">Submit</button>
+    </div>
 
-  <button id="solver" type="button" onclick="solveCube()"> Solve The Cube</button>
+  </div>
+
+  <div class="center solver">
+    <button class="button button4" id="solver" onclick="solveCube()"> Solve The Cube</button>
+  </div>
+
   <script type="module" src="cubeSolver.js"></script>
 
   <!--The timer script -->
   <script src="timer.js"></script>
 
   <!-- The scramble element -->
-  <div id="scramble"></div>
+  <div class="scramble">
+    <div id="scramble"></div>
+  </div>
 
   <!-- The results display and script -->
-  <div id="results"></div>
+  <div id="results" class="results"></div>
   <script type="module" src="results.js"></script>
+
+  <!-- The cube script -->
+  <div id="cube"></div>
+  <script type="module" src="sketch.js"></script>
+
+
 </body>
 
 </html>
