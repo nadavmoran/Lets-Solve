@@ -63,7 +63,10 @@ app.post("/time", (req, res) => {
   var data = req.body;
   console.log(data);
   var name = data.name;
-  if (!results[name]) results[name] = [];
+  if (!results[name]) {
+    results[name] = [];
+    competitorsStatus[name] = true;
+  }
   if (data.result) {
     results[name].push(data.result);
     competitorsStatus[name] = false;
